@@ -29,6 +29,6 @@ jobs:
     - run: npm install -g yarn@1.22.10
     - name: Build
       run: |
-        yarn
-        yarn build
+        npm install
+        npm run build
 
