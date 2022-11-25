@@ -124,7 +124,7 @@ const data = {
     title: '咸鱼日记',
     router: {
       mode: 'history',
-      base: '/xyDiary/'
+      base: './'
     },
     optimization: {
       treeShaking: {
