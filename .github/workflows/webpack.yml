@@ -29,8 +29,7 @@ jobs:
     - run: npm install -g yarn@1.22.10
     - name: Build
       run: |
-        npm config set proxy false
-        npm cache clean --force
+        yarn cache clean --force
         yarn
         yarn build
 
