@@ -30,7 +30,7 @@ jobs:
     - name: Build
       run: |
         npm config set proxy false
-        npm cache clean
+        npm cache clean --force
         yarn
         yarn build
 
