@@ -20,15 +20,5 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
         FOLDER: dist
-
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-
-    - run: npm install -g yarn@1.22.10
-    - name: Build
-      run: |
-        npm install
-        npm run build
+        BUILD_SCRIPT: npm install && npm run build # 执行的命令
 
