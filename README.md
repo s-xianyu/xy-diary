@@ -34,7 +34,5 @@ yarn serve
 yarn build
 ```
 
-
-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
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
