@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-11-01 15:58:31
- * @LastEditTime: 2022-08-08 11:17:19
- * @LastEditors: ss shangs@schbrain.com
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /uni-module/src/newPages.js
- */
 const fs = require('fs')
 const pages = require('./router')
 const tabBar = require('./utils/tabBar')

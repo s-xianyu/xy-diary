@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2021-11-26 13:45:13
- * @LastEditTime: 2022-08-08 11:06:57
- * @LastEditors: ss shangs@schbrain.com
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /uni-module/src/pages/index.vue
--->
 <template>
   <view class="profile">
     <view class="list">
@@ -22,6 +14,12 @@
             </view>
           </view>
         </s-car>
+      </view>
+    </view>
+    <view class="footer">
+      <view class="organizer">
+        <view>Organizer by @咸鱼日记</view>
+        <view>Author:  cmy and s-xianyu</view>
       </view>
     </view>
     <!-- 发薪日选择框 -->
@@ -137,6 +135,16 @@ export default {
           }
         }
       }
+    }
+  }
+  .footer{
+    margin-top:20rpx;
+    .organizer{
+      @include wh(100%, auto);
+      @include flexCenter;
+      flex-direction: column;
+      font-size: 28rpx;
+      color:$uni-font-tint;
     }
   }
   .popup{

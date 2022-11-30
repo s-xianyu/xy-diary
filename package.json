@@ -7,6 +7,7 @@
     "serve:wx": "npm run renewal && npm run dev:mp-weixin",
     "build": "VUE_APP_ENV=online npm run renewal && npm run build:h5",
     "build:wx": "VUE_APP_ENV=online npm run renewal && npm run build:mp-weixin",
+    "build:toutiao": "VUE_APP_ENV=online npm run renewal && npm run build:mp-toutiao",
     "lint": "vue-cli-service lint",
     "renewal": "node src/newPages.js && node src/manifest.js",
     "build:app-plus": "cross-env NODE_ENV=production UNI_PLATFORM=app-plus vue-cli-service uni-build",

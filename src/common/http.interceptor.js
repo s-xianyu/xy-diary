@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-11-23 09:32:26
- * @LastEditTime: 2022-08-08 11:21:06
- * @LastEditors: ss shangs@schbrain.com
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /uni-module/src/common/http.interceptor.js
- */
 // 这里的vm，就是我们在vue文件里面的this，所以我们能在这里获取vuex的变量，比如存放在里面的token
 // 同时，我们也可以在此使用getApp().globalData，如果你把token放在getApp().globalData的话，也是可以使用的
 const install = (Vue, vm) => {
