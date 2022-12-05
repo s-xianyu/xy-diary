@@ -87,11 +87,14 @@
     <s-car :border="true">
       <view class="header">
         <view class="header-title">每日一言</view>
-        <view class="header-setting" @click="getHitokoto">
+        <view class="header-setting" @click="$u.throttle(getHitokoto, 2000, true)">
           <text>换一句</text>
         </view>
       </view>
-      <view class="box" style="background: #fffbcc">
+      <view class="box" style="background:#0000">
+        <view class="box-bg">
+          <image class="bg" :src="imgurl"></image>
+        </view>
         <view class="box-hitokoto">
           <view class="box-hitokoto-title">
             <text>{{hitokoto.hitokoto || ''}}</text>
@@ -201,7 +204,8 @@ export default {
       },
       payVisible: false,
       payList: [],
-      payTitle: 0
+      payTitle: 0,
+      imgurl: ''
     }
   },
   async onLoad () {
@@ -255,6 +259,8 @@ export default {
      */
     async getHitokoto () {
       this.hitokoto = await this.$u.api.getHitokoto() || {}
+      const { imgurl } = await this.$u.api.getBiturl()
+      this.imgurl = imgurl || ''
     },
     /**
      * 获取退休日
@@ -454,6 +460,18 @@ export default {
     @include flexCenter;
     flex-direction: column;
     background:#fff;
+    position: relative;
+    &-bg{
+      background: #ffffff;
+      position: absolute;
+      top:0;
+      left:0;
+      right:0;
+      z-index: -1;
+      .bg{
+        opacity: .5;
+      }
+    }
     &-year{
       font-size: 40rpx;
       color: $uni-font-tint;

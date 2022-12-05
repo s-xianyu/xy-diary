@@ -111,7 +111,7 @@ const data = {
       },
       proxy: {
         '/api': {
-          target: 'http://192.168.5.92:8092/', // 请求的目标域名
+          target: 'https://api.ixiaowai.cn', // 请求的目标域名
           changeOrigin: true,
           secure: false,
           pathRewrite: { // 使用代理； 告诉他你这个连接要用代理

@@ -2,9 +2,9 @@
 const install = (Vue, vm) => {
   // 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
   vm.$u.api = {
-    // 登录获取token
-    getCodeInfo: (params = {}) => vm.$u.get('http://www.net.cn/static/customercare/yourip.asp', params),
-    getHitokoto: (params = {}) => vm.$u.get('https://international.v1.hitokoto.cn/', params)
+    getHitokoto: (params = {}) => vm.$u.get('https://international.v1.hitokoto.cn/', params),
+    getBiturl: (params = {}) => vm.$u.get('https://api.ixiaowai.cn/mcapi/mcapi.php?return=json', params),
+    getYlapi: (params = {}) => vm.$u.get('/api/ylapi/index.php/?code=json', params)
   }
 }
 

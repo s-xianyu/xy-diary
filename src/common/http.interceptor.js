@@ -2,7 +2,7 @@
 // 同时，我们也可以在此使用getApp().globalData，如果你把token放在getApp().globalData的话，也是可以使用的
 const install = (Vue, vm) => {
   Vue.prototype.$u.http.setConfig({
-    baseUrl: 'https://www.fastmock.site/mock/95e9b6faf33674f6d8e83097fd1de600/week', // mockApi地址
+    // baseUrl: 'http://192.168.5.166:2021', // mockApi地址
     // 如果将此值设置为true，拦截回调中将会返回服务端返回的所有数据response，而不是response.data
     // 设置为true后，就需要在this.$u.http.interceptor.response进行多一次的判断，请打印查看具体值
     // originalData: true,
