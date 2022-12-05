@@ -258,8 +258,16 @@ export default {
      * @returns {Promise<void>}
      */
     async getHitokoto () {
+      let api = ''
+      // #ifdef H5
+      api = 'getBiturl2'
+      // #endif
+      // #ifdef MP-WEIXIN
+      api = 'getBiturl'
+      // #endif
+      console.log(api)
       this.hitokoto = await this.$u.api.getHitokoto() || {}
-      const { imgurl } = await this.$u.api.getBiturl()
+      const { imgurl } = await this.$u.api[api]()
       this.imgurl = imgurl || ''
     },
     /**
