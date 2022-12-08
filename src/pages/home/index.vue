@@ -1,137 +1,140 @@
 <template>
   <view class="home">
-    <!-- 头部展示时间 -->
-    <s-car :border="true">
-      <view class="header">
+    <template v-if="!pageLoading">
+      <!-- 头部展示时间 -->
+      <s-car :border="true">
+        <view class="header">
+          <view></view>
+          <view class="header-title">摸鱼时间</view>
+          <navigator url="/pages/setting/index" class="header-setting">
+            <text>设置</text>
+            <u-icon name="arrow-right-double"/>
+          </navigator>
+        </view>
+        <view class="box">
+          <view class="box-year">
+            <text>{{ date.Y }}</text>年
+            <text>{{ date.M }}</text>月
+            <text>{{ date.D }}</text>天
+          </view>
+          <view class="box-data">
+            <text>{{ date.hh }}</text>:
+            <text>{{ date.mm }}</text>:
+            <text>{{ date.ss }}</text>
+          </view>
+        </view>
+      </s-car>
+      <!-- 间距 -->
+      <view class="gap">
         <view></view>
-        <view class="header-title">摸鱼时间</view>
-        <navigator url="/pages/setting/index" class="header-setting">
-          <text>设置</text>
-          <u-icon name="arrow-right-double"/>
-        </navigator>
+        <view></view>
       </view>
-      <view class="box">
-        <view class="box-year">
-          <text>{{ date.Y }}</text>年
-          <text>{{ date.M }}</text>月
-          <text>{{ date.D }}</text>天
+      <!-- 退休时间 -->
+      <s-car :border="true">
+        <view class="header">
+          <view class="header-title">退休时间：{{retirement}}</view>
         </view>
-        <view class="box-data">
-          <text>{{ date.hh }}</text>:
-          <text>{{ date.mm }}</text>:
-          <text>{{ date.ss }}</text>
-        </view>
-      </view>
-    </s-car>
-    <!-- 间距 -->
-    <view class="gap">
-      <view></view>
-      <view></view>
-    </view>
-    <!-- 退休时间 -->
-    <s-car :border="true">
-      <view class="header">
-        <view class="header-title">退休时间：{{retirement}}</view>
-      </view>
-      <view class="box">
-        <template v-if="vuex_user.retirementMoney > 0">
-          <view>距退休还剩</view>
-          <view class="box-retirement">
-            <text>{{ workDate.Y }}</text>年
-            <text>{{ workDate.M }}</text>月
-            <text>{{ workDate.D }}</text>天
-            <text>{{ workDate.hh }}</text>时
-            <text>{{ workDate.mm }}</text>分
-            <text>{{ workDate.ss }}</text>秒
-          </view>
-          <view>还能到手的薪资为</view>
-          <view class="box-retirement">
-            <text>￥{{ vuex_user.retirementMoney }}</text>
-          </view>
-        </template>
-        <view class="box-text" v-else>
-          <text>终于熬到退休啦！</text>
-          <image class="image" src="../../static/image/home/4.png"></image>
-        </view>
-      </view>
-    </s-car>
-    <!-- 间距 -->
-    <view class="gap">
-      <view></view>
-      <view></view>
-    </view>
-    <!-- 今日收入 -->
-    <s-car :border="true">
-      <view class="header fl">
-        <view class="header-title">今日收入</view>
-      </view>
-      <view class="box">
-        <view class="box-days">
-          <view class="money">
-            <template v-if="vuex_user.retirementMoney > 0">
-              <view>今日到手薪资</view>
-              <view>￥<text>{{ vuex_user.dayMoney }}</text></view>
-            </template>
-            <view class="no" v-else>退休没工资了哦</view>
-            <image class="image" src="../../static/image/home/9.png"></image>
+        <view class="box">
+          <template v-if="vuex_user.retirementMoney > 0">
+            <view>距退休还剩</view>
+            <view class="box-retirement">
+              <text>{{ workDate.Y }}</text>年
+              <text>{{ workDate.M }}</text>月
+              <text>{{ workDate.D }}</text>天
+              <text>{{ workDate.hh }}</text>时
+              <text>{{ workDate.mm }}</text>分
+              <text>{{ workDate.ss }}</text>秒
+            </view>
+            <view>还能到手的薪资为</view>
+            <view class="box-retirement">
+              <text>￥{{ vuex_user.retirementMoney }}</text>
+            </view>
+          </template>
+          <view class="box-text" v-else>
+            <text>终于熬到退休啦！</text>
+            <image class="image" src="../../static/image/home/4.png"></image>
           </view>
         </view>
+      </s-car>
+      <!-- 间距 -->
+      <view class="gap">
+        <view></view>
+        <view></view>
       </view>
-    </s-car>
-    <!-- 间距 -->
-    <view class="gap">
-      <view></view>
-      <view></view>
-    </view>
-    <!-- 每日一言 -->
-    <s-car :border="true">
-      <view class="header">
-        <view class="header-title">每日一言</view>
-        <view class="header-setting" @click="$u.throttle(getHitokoto, 2000, true)">
-          <text>换一句</text>
+      <!-- 今日收入 -->
+      <s-car :border="true">
+        <view class="header fl">
+          <view class="header-title">今日收入</view>
         </view>
-      </view>
-      <view class="box" style="background:#0000">
-        <view class="box-bg">
-          <image class="bg" :src="imgurl"></image>
-        </view>
-        <view class="box-hitokoto">
-          <view class="box-hitokoto-title">
-            <text>{{hitokoto.hitokoto || ''}}</text>
-          </view>
-          <view class="box-hitokoto-who">
-            <text>-- {{hitokoto.from_who || hitokoto.creator || ''}}</text>
-            <text>《{{hitokoto.from || '--'}}》</text>
+        <view class="box">
+          <view class="box-days">
+            <view class="money">
+              <template v-if="vuex_user.retirementMoney > 0">
+                <view>今日到手薪资</view>
+                <view>￥<text>{{ vuex_user.dayMoney }}</text></view>
+              </template>
+              <view class="no" v-else>退休没工资了哦</view>
+              <image class="image" src="../../static/image/home/9.png"></image>
+            </view>
           </view>
         </view>
+      </s-car>
+      <!-- 间距 -->
+      <view class="gap">
+        <view></view>
+        <view></view>
       </view>
-    </s-car>
-    <u-gap height="20" bg-color="#0000"/>
-    <!-- 休息日 -->
-    <s-car :border="false">
-      <view class="box" @click="vacationVisible = true">
-        <view class="box-vacation">
-          <view class="box-vacation-title">{{ vacationObj.title }}</view>
-          <view class="box-vacation-number" v-if="vacationObj.day > 0">
-            <text>{{ vacationObj.day }}</text>天
+      <!-- 每日一言 -->
+      <s-car :border="true">
+        <view class="header">
+          <view class="header-title">每日一言</view>
+          <view class="header-setting" @click="$u.throttle(getHitokoto, 2000, true)">
+            <text>换一句</text>
           </view>
         </view>
-      </view>
-    </s-car>
-    <u-gap height="20" bg-color="#0000"/>
-    <!-- 发薪日 -->
-    <s-car :border="false">
-      <view class="box" @click="payVisible = true">
-        <view class="box-vacation">
-          <view class="box-vacation-title">
-            {{ vuex_user.payDay === 0 ? '今天发工资啦！' : '距离发薪日还有' }}
+        <view class="box" :class="boxClassName">
+          <view class="box-bg">
+            <image class="bg" :src="imgurl"></image>
           </view>
-          <view class="box-vacation-number"  v-if="vuex_user.payDay > 0">
-            <text>{{ vuex_user.payDay }}</text>天
+          <view class="box-hitokoto">
+            <view class="box-hitokoto-title">
+              <text>{{hitokoto.hitokoto || ''}}</text>
+            </view>
+            <view class="box-hitokoto-who">
+              <text>-- {{hitokoto.from_who || hitokoto.creator || ''}}</text>
+              <text>《{{hitokoto.from || '--'}}》</text>
+            </view>
           </view>
         </view>
-      </view>
-    </s-car>
+      </s-car>
+      <u-gap height="20" bg-color="#0000"/>
+      <!-- 休息日 -->
+      <s-car :border="false">
+        <view class="box" @click="vacationVisible = true">
+          <view class="box-vacation">
+            <view class="box-vacation-title">{{ vacationObj.title }}</view>
+            <view class="box-vacation-number" v-if="vacationObj.day > 0">
+              <text>{{ vacationObj.day }}</text>天
+            </view>
+          </view>
+        </view>
+      </s-car>
+      <u-gap height="20" bg-color="#0000"/>
+      <!-- 发薪日 -->
+      <s-car :border="false">
+        <view class="box" @click="payVisible = true">
+          <view class="box-vacation">
+            <view class="box-vacation-title">
+              {{ vuex_user.payDay === 0 ? '今天发工资啦！' : '距离发薪日还有' }}
+            </view>
+            <view class="box-vacation-number"  v-if="vuex_user.payDay > 0">
+              <text>{{ vuex_user.payDay }}</text>天
+            </view>
+          </view>
+        </view>
+      </s-car>
+    </template>
+    <s-loading v-else/>
     <!-- 休息日选择框 -->
     <s-popup :visible.sync="vacationVisible"
              width="65%"
@@ -182,6 +185,7 @@ export default {
   },
   data () {
     return {
+      pageLoading: true,
       title: '首页',
       date: {},
       retirement: '',
@@ -250,6 +254,13 @@ export default {
   computed: {
     payIndex () {
       return this.payList.findIndex(i => i.value === this.payTitle)
+    },
+    boxClassName () {
+      let className = 'h5'
+      // #ifdef MP-WEIXIN
+      className = 'mp-weixin'
+      // #endif
+      return className
     }
   },
   methods: {
@@ -258,9 +269,13 @@ export default {
      * @returns {Promise<void>}
      */
     async getHitokoto () {
-      this.hitokoto = await this.$u.api.getHitokoto() || {}
+      this.hitokoto = await this.$u.api.getHitokoto().finally(() => {
+        this.pageLoading = false
+      })
       // #ifdef MP-WEIXIN
-      const { imgurl } = await this.$u.api.getBiturl()
+      const { imgurl } = await this.$u.api.getBiturl().finally(() => {
+        this.pageLoading = false
+      })
       this.imgurl = imgurl || ''
       // #endif
     },
@@ -463,6 +478,12 @@ export default {
     flex-direction: column;
     background:#fff;
     position: relative;
+    &.h5{
+      background: rgba($color: $uni-color, $alpha: .3)
+    }
+    &.mp-weixin{
+      background: #0000;
+    }
     &-bg{
       background: #ffffff;
       position: absolute;

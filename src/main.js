@@ -9,6 +9,9 @@ import store from '@/store'
 import uView from 'uview-ui'
 // http拦截器，将此部分放在new Vue()和app.$mount()之间，才能App.vue中正常使用
 import httpInterceptor from '@/common/http.interceptor.js'
+// #ifdef H5
+import sLoading from '@/components/s-loading/index'
+// #endif
 
 // http接口API抽离，免于写url或者一些固定的参数
 import httpApi from '@/common/http.api.js'
@@ -21,6 +24,9 @@ App.mpType = 'app'
 const vuexStore = require('@/store/$u.mixin.js')
 Vue.mixin(vuexStore)
 Vue.use(uView)
+// #ifdef H5
+Vue.component('sLoading', sLoading)
+// #endif
 const app = new Vue({
   store,
   ...App

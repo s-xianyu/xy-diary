@@ -126,6 +126,11 @@ const data = {
       mode: 'history',
       base: './'
     },
+    async: {
+      loading: 'sLoading',
+      delay: 200,
+      timeout: 10000
+    },
     optimization: {
       treeShaking: {
         enable: false

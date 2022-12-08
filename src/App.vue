@@ -1,6 +1,8 @@
 <script>
+import pageAnimation from './components/s-animation/index'
 // 测试2
 export default {
+  mixins: [pageAnimation],
   data () {
     return {
       userInfo: {}

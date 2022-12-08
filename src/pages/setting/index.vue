@@ -1,48 +1,51 @@
 <template>
   <view class="setting">
-    <s-car>
-      <view class="img">
-        <image
-          style="width: 300px; height: 300px;opacity: .2"
-          src="../../static/image/home/4.png"></image>
+    <template v-if="!pageLoading">
+      <s-car>
+        <view class="img">
+          <image
+            style="width: 300px; height: 300px;opacity: .2"
+            src="../../static/image/home/4.png"></image>
+        </view>
+        <view class="box">
+          <u-form :model="form" ref="uForm">
+            <u-form-item label-width="150" label="出生日期">
+              <picker mode="date" :value="form.birthData" :start="startDate" :end="endDate" @change="birthDataChange">
+                <view class="uni-input">{{form.birthData}}</view>
+              </picker>
+            </u-form-item>
+            <u-form-item label-width="150" label="上班时间">
+              <picker mode="time" :value="form.dutyTime" start="06:00" end="21:00" @change="dutyTimeChange">
+                <view class="uni-input">{{form.dutyTime}}</view>
+              </picker>
+            </u-form-item>
+            <u-form-item label-width="150" label="下班时间">
+              <picker mode="time" :value="form.closingTime" start="06:00" end="21:00" @change="closingTimeChange">
+                <view class="uni-input">{{form.closingTime}}</view>
+              </picker>
+            </u-form-item>
+            <u-form-item label-width="150" label="退休年龄">
+              <picker :value="retirementIndex" :range="array" @change="retirementChange">
+                <view class="uni-input">{{form.retirement}}</view>
+              </picker>
+            </u-form-item>
+            <u-form-item label-width="150" label="平均月薪">
+              <input type="digit" v-model="form.monthlyPay" placeholder="请输入平均月薪" />
+            </u-form-item>
+            <u-form-item label-width="150" label="现有积蓄">
+              <input type="digit" v-model="form.savingsPay" placeholder="请输入现有积蓄" />
+            </u-form-item>
+            <u-form-item label-width="150" label="每月开销">
+              <input type="digit" v-model="form.expensesPay" placeholder="请输入每月开销" />
+            </u-form-item>
+          </u-form>
+        </view>
+      </s-car>
+      <view class="btn">
+        <view class="btn-commit" @click="commitForm">决定了鸭</view>
       </view>
-      <view class="box">
-        <u-form :model="form" ref="uForm">
-          <u-form-item label-width="150" label="出生日期">
-            <picker mode="date" :value="form.birthData" :start="startDate" :end="endDate" @change="birthDataChange">
-              <view class="uni-input">{{form.birthData}}</view>
-            </picker>
-          </u-form-item>
-          <u-form-item label-width="150" label="上班时间">
-            <picker mode="time" :value="form.dutyTime" start="06:00" end="21:00" @change="dutyTimeChange">
-              <view class="uni-input">{{form.dutyTime}}</view>
-            </picker>
-          </u-form-item>
-          <u-form-item label-width="150" label="下班时间">
-            <picker mode="time" :value="form.closingTime" start="06:00" end="21:00" @change="closingTimeChange">
-              <view class="uni-input">{{form.closingTime}}</view>
-            </picker>
-          </u-form-item>
-          <u-form-item label-width="150" label="退休年龄">
-            <picker :value="retirementIndex" :range="array" @change="retirementChange">
-              <view class="uni-input">{{form.retirement}}</view>
-            </picker>
-          </u-form-item>
-          <u-form-item label-width="150" label="平均月薪">
-            <input type="digit" v-model="form.monthlyPay" placeholder="请输入平均月薪" />
-          </u-form-item>
-          <u-form-item label-width="150" label="现有积蓄">
-            <input type="digit" v-model="form.savingsPay" placeholder="请输入现有积蓄" />
-          </u-form-item>
-          <u-form-item label-width="150" label="每月开销">
-            <input type="digit" v-model="form.expensesPay" placeholder="请输入每月开销" />
-          </u-form-item>
-        </u-form>
-      </view>
-    </s-car>
-    <view class="btn">
-      <view class="btn-commit" @click="commitForm">决定了鸭</view>
-    </view>
+    </template>
+    <s-loading v-else/>
     <u-toast ref="uToast" />
   </view>
 </template>
@@ -55,6 +58,7 @@ export default {
   },
   data () {
     return {
+      pageLoading: true,
       form: {},
       array: [35, 40, 45, 50, 55, 60, 65]
     }
@@ -72,6 +76,9 @@ export default {
   },
   onShow () {
     this.form = this.vuex_user
+    setTimeout(() => {
+      this.pageLoading = false
+    }, 500)
   },
   /**
    * 用户点击右上角分享
