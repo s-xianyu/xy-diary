@@ -3,6 +3,7 @@
            mode="center"
            :width="width"
            @close="close"
+           :mask-close-able="maskCloseAble"
            border-radius="30">
     <s-car>
       <view class="header">{{title}}</view>
@@ -10,6 +11,7 @@
         <slot/>
       </view>
       <view class="btn">
+        <view v-if="showClose" class="btn-close" @click="close">取消</view>
         <view class="btn-commit" @click="commit">决定了鸭</view>
       </view>
     </s-car>
@@ -24,6 +26,14 @@ export default {
   },
   props: {
     visible: {
+      type: Boolean,
+      default: false
+    },
+    maskCloseAble: {
+      type: Boolean,
+      default: true
+    },
+    showClose: {
       type: Boolean,
       default: false
     },
@@ -61,15 +71,20 @@ export default {
   background: #fff;
   @include wh(100%, auto);
   @include flexCenter;
-  padding: 40rpx 0;
+  padding: 40rpx 30rpx;
+  gap: 20rpx;
+  &-close,
   &-commit{
     @include flexCenter;
-    @include wh(80%, 80rpx);
+    @include wh(100%, 80rpx);
     border-radius: 50rpx;
-    border: 2px solid $uni-border-color;
+    border: 2px solid $uni-font;
     background: $uni-color;
     color: $uni-font;
     font-size: 36rpx;
+  }
+  &-close{
+    background: #fff;
   }
 }
 </style>

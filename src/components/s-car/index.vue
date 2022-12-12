@@ -29,7 +29,7 @@ export default {
     content: '';
     display: inline-block;
     background: $uni-color;
-    border: 4rpx solid $uni-border-color;
+    border: 4rpx solid $uni-font;
     border-radius: 30rpx;
     position: absolute;
     top:0;
@@ -39,7 +39,7 @@ export default {
   }
   &-box{
     background: $uni-color;
-    border: 4rpx solid $uni-border-color;
+    border: 4rpx solid $uni-font;
     border-radius: 30rpx;
     position: relative;
     right: 20rpx;
@@ -52,7 +52,7 @@ export default {
     &.border:after{
       content: '';
       display: flex;
-      border-top: 4rpx solid $uni-border-color;
+      border-top: 4rpx solid $uni-font;
       position: absolute;
       left: -4rpx;
       right:0;

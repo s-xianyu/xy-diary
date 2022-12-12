@@ -159,7 +159,7 @@ export default {
       @include flexCenter;
       @include wh(80%, 110rpx);
       border-radius: 50rpx;
-      border: 2px solid $uni-border-color;
+      border: 2px solid $uni-font;
       background: $uni-color;
       color: $uni-font;
       font-size: 40rpx;

@@ -125,10 +125,11 @@ export default {
             font-family: xy;
             position: relative;
             z-index: 2;
+            color:$uni-font;
           }
           &-title{
             font-size: 34rpx;
-            color: $uni-font-tint;
+            color: rgba($color: $uni-font, $alpha: .3);
           }
           image{
             @include wh(200rpx, 200rpx);
@@ -144,7 +145,7 @@ export default {
       @include flexCenter;
       flex-direction: column;
       font-size: 28rpx;
-      color:$uni-font-tint;
+      color: rgba($color: $uni-font, $alpha: .3);
     }
   }
   .popup{

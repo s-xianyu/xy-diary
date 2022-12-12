@@ -8,7 +8,7 @@
           <view class="header-title">摸鱼时间</view>
           <navigator url="/pages/setting/index" class="header-setting">
             <text>设置</text>
-            <u-icon name="arrow-right-double"/>
+            <u-icon :color="$variables.fontColor" name="arrow-right-double"/>
           </navigator>
         </view>
         <view class="box">
@@ -79,6 +79,33 @@
           </view>
         </view>
       </s-car>
+      <view class="gap">
+        <view></view>
+        <view></view>
+      </view>
+      <view class="row">
+        <navigator
+          :url="`/pages/home/${ item.path }`"
+          class="row-item"
+          v-for="(item, index) in rowList"
+          :key="index">
+          <s-car :border="false">
+            <view class="content">
+              <view class="content-label">{{ item.label }}</view>
+              <view class="content-main">
+                <view class="icon">
+                  <u-icon name="arrow-right" :color="$variables.fontColor" size="28"/>
+                </view>
+                <view class="img">
+                  <image
+                    class="img-i"
+                    :src="require(`@/static/image/home/${ item.img }`)"></image>
+                </view>
+              </view>
+            </view>
+          </s-car>
+        </navigator>
+      </view>
       <!-- 间距 -->
       <view class="gap">
         <view></view>
@@ -209,7 +236,11 @@ export default {
       payVisible: false,
       payList: [],
       payTitle: 0,
-      imgurl: ''
+      imgurl: '',
+      rowList: [
+        { label: '吃饭时间到', img: '1.png', path: 'lottery' },
+        { label: '下班做啥呀', img: '3.png', path: 'happy' }
+      ]
     }
   },
   async onLoad () {
@@ -405,8 +436,13 @@ export default {
       const { Y, M, D } = this.date
       const { payTitle } = this.vuex_user
       // 判断 小于 当前时间，把月份 + 1
-      const selfDay = Number(payTitle) >= D ? M : Number(M) + 1
-      const et = `${Y}-${selfDay}-${this.vuex_user.payTitle} 00:00:00`
+      let selfDay = Number(payTitle) >= D ? M : Number(M) + 1
+      let selfYear = this.$u.deepClone(Y)
+      if (selfDay > 12) {
+        selfDay = 1
+        selfYear = Number(selfYear) + 1
+      }
+      const et = `${selfYear}-${selfDay}-${this.vuex_user.payTitle} 00:00:00`
       const st = `${Y}-${M}-${D} 00:00:00`
       const endTime = new Date(et.replace(/-/g, '/')).getTime()
       const startTime = new Date(st.replace(/-/g, '/')).getTime()
@@ -458,6 +494,7 @@ export default {
       margin-top: -10rpx;
       font-size: 38rpx;
       font-family: xy;
+      color: $uni-font;
     }
     &-setting{
       font-family: xy;
@@ -467,7 +504,54 @@ export default {
       top:0;
       right:0;
       text{
+        color: $uni-font;
         margin-top:-10rpx;
+      }
+    }
+  }
+  .row{
+    @include flexCenter;
+    gap: 15px;
+    &-item{
+      flex: 1;
+      .content{
+        background: #fff;
+        @include flexCenter;
+        flex-direction: column;
+        padding: 30rpx 0 0;
+        color:$uni-font;
+        &-label{
+          @include wh(80%, 60rpx);
+          background: $uni-color;
+          border-radius: 40rpx;
+          @include flexCenter;
+          font-size: 40rpx;
+          font-family: xy;
+          position: relative;
+          z-index: 2;
+        }
+        &-main{
+          @include wh(100%, auto);
+          @include flexCenter;
+          justify-content: space-between;
+          padding: 20rpx 0;
+          .icon{
+            @include wh(40rpx, 40rpx);
+            margin-left: 50rpx;
+            margin-top:10rpx;
+            background: $uni-color;
+            border:4rpx solid $uni-font;
+            border-radius: 50%;
+            @include flexCenter;
+          }
+          .img{
+            margin-right:-1rpx;
+            margin-bottom:-50rpx;
+            &-i{
+              @include wh(150rpx,150rpx);
+            }
+          }
+        }
       }
     }
   }
@@ -478,6 +562,7 @@ export default {
     flex-direction: column;
     background:#fff;
     position: relative;
+    color: $uni-font;
     &.h5{
       background: rgba($color: $uni-color, $alpha: .3)
     }
@@ -497,7 +582,7 @@ export default {
     }
     &-year{
       font-size: 40rpx;
-      color: $uni-font-tint;
+      color: rgba($color: $uni-font, $alpha: .3);
       text{
         font-size: 50rpx;
         margin:0 10rpx;
@@ -507,7 +592,7 @@ export default {
     &-data{
       margin-top:20rpx;
       font-size: 40rpx;
-      color: $uni-font-tint;
+      color: rgba($color: $uni-font, $alpha: .3);
       text{
         font-size: 40rpx;
         margin:0 20rpx;
@@ -539,7 +624,7 @@ export default {
     }
     &-retirement{
       font-size: 30rpx;
-      color: $uni-font-tint;
+      color: rgba($color: $uni-font, $alpha: .3);
       margin-bottom: 20rpx;
       text{
         font-size: 36rpx;
@@ -559,7 +644,7 @@ export default {
         flex-direction: column;
         min-height: 140rpx;
         font-size: 30rpx;
-        color: $uni-font-tint;
+        color: rgba($color: $uni-font, $alpha: .3);
         position: relative;
         .image{
           display: inline-block;
@@ -619,7 +704,7 @@ export default {
     & > view{
       @include wh(30rpx, 20rpx);
       background:$uni-color;
-      border-color: $uni-border-color;
+      border-color: $uni-font;
       border-style: solid;
       border-width: 0 4rpx 0 4rpx;
     };

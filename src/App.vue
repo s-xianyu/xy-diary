@@ -32,6 +32,6 @@ body{
 }
 page{
   background-color: $uni-color-bg;
-  //min-height:100vh;
+  min-height: calc(100vh - 100rpx);
 }
 </style>

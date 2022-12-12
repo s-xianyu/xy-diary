@@ -90,13 +90,10 @@ $uni-width: 1000rpx;
 
 //主题色
 $uni-color: #fad434;
-//边框色
-$uni-border-color: #090300;
 //背景色
 $uni-color-bg: #FFF5E4;
 //字体色
 $uni-font: #090300;
-$uni-font-tint: #858483;
 
 
 @import 'uview-ui/theme.scss';
@@ -122,16 +119,16 @@ body,html{
   display: none;
 }
 
-// #ifdef H5
 @font-face {
   font-family: 'xy';
   src: url('https://schbrain-static-online.oss-cn-hangzhou.aliyuncs.com/resources/xy.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
-// #endif H5
 ::v-deep{
-  .uni-picker-container{
-    z-index: 100000!important;
+  .deep-class{
+    .uni-picker-container{
+      z-index: 100000!important;
+    }
   }
 }

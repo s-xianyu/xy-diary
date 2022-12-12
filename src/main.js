@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import App from './App'
 import '@/utils/loading'
+// #ifdef H5
+// 完整加载
+import VueLuckyCanvas from '@lucky-canvas/vue'
+// #endif
 
 // 此处为演示vuex使用，非uView的功能部分
 import store from '@/store'
@@ -22,9 +26,11 @@ App.mpType = 'app'
 
 // 引入uView提供的对vuex的简写法文件
 const vuexStore = require('@/store/$u.mixin.js')
+
 Vue.mixin(vuexStore)
 Vue.use(uView)
 // #ifdef H5
+Vue.use(VueLuckyCanvas)
 Vue.component('sLoading', sLoading)
 // #endif
 const app = new Vue({
