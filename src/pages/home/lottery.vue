@@ -324,7 +324,7 @@ export default {
 
 <style lang="scss" scoped>
 .lottery{
-  padding: 80rpx 0;
+  padding: 50rpx 0 0;
   @include wh(100%, calc(100vh - 88rpx));
   @include flexCenter;
   flex-direction: column;
