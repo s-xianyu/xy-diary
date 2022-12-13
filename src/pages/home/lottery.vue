@@ -1,6 +1,6 @@
 <template>
   <view class="lottery">
-    <view class="lottery-hint">中午不知道吃什么的时候，可以写下附近喜欢吃的小店，开启随机转一转，不为吃饭而烦恼。</view>
+    <view class="lottery-hint">不知道吃什么的时候，可以写下附近喜欢吃的小店，开启随机转一转，不为吃饭而烦恼。</view>
     <view :style="{height: lotterySize, width: lotterySize,background: colors.color,borderRadius: '50%'}">
       <view v-show="!settingVisible">
         <LuckyWheel
