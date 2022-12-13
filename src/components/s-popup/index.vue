@@ -2,6 +2,7 @@
   <u-popup :value.sync="visible"
            mode="center"
            :width="width"
+           :z-index="zIndex"
            @close="close"
            :mask-close-able="maskCloseAble"
            border-radius="30">
@@ -44,6 +45,10 @@ export default {
     title: {
       type: String,
       default: '请选择'
+    },
+    zIndex: {
+      type: [String, Number],
+      default: 10075
     }
   },
   methods: {

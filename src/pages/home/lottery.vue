@@ -1,24 +1,30 @@
 <template>
   <view class="lottery">
     <view class="lottery-hint">中午不知道吃什么的时候，可以写下附近喜欢吃的小店，开启随机转一转，不为吃饭而烦恼。</view>
-    <LuckyWheel
-      ref="myLucky"
-      :width="lotterySize"
-      :height="lotterySize"
-      :blocks="blocks"
-      :prizes="prizes"
-      :buttons="buttons"
-      @start="startCallBack"
-      @end="endCallBack"/>
+    <view :style="{height: lotterySize, width: lotterySize,background: colors.color,borderRadius: '50%'}">
+      <view v-show="!settingVisible">
+        <LuckyWheel
+          ref="myLucky"
+          :width="lotterySize"
+          :height="lotterySize"
+          :blocks="blocks"
+          :prizes="prizesList"
+          :buttons="buttons"
+          @start="startCallBack"
+          @end="endCallBack"/>
+      </view>
+    </view>
     <view class="btn">
-      <view class="btn-setting" @click="settingVisible = true">设置</view>
-      <view class="btn-setting" @click="resetVisible = true">重置</view>
+      <view class="btn-setting" @click="settingVisible = flag">我的菜单</view>
+      <view class="btn-setting" @click="flag && randomMenu()">随机菜单</view>
+      <view class="btn-setting" @click="resetVisible = flag">重置</view>
     </view>
     <!-- 表单设置项 转盘内容区设置 -->
     <s-popup :visible.sync="settingVisible"
              :show-close="true"
+             z-index="100000"
              :mask-close-able="false"
-             width="80%"
+             width="85%"
              @commit="settingCommit"
              title="设置菜单">
       <scroll-view :scroll-top="scrollTop" scroll-y="true"  class="popup">
@@ -54,12 +60,12 @@
         <view class="add-btn" @click="addForm">加一项鸭</view>
       </view>
     </s-popup>
-    <!-- 中午吃啥呀提示框 -->
+    <!-- 今天吃啥呀提示框 -->
     <s-popup :visible.sync="lotteryVisible"
-             title="中午去吃"
+             title="今天去吃"
              width="80%">
       <view class="hint">
-        <view class="hint-lottery">{{ lotteryTitle }}</view>
+        <view class="hint-lottery">{{ lotteryContent }}</view>
       </view>
     </s-popup>
     <!-- 重置确认框 -->
@@ -80,6 +86,7 @@
 import LuckyWheel from '@lucky-canvas/uni/lucky-wheel' // 大转盘
 // #endif
 import sPopup from '@/components/s-popup/index.vue'
+import { menu } from '@/utils/type'
 export default {
   components: {
     // #ifdef MP-WEIXIN
@@ -90,6 +97,7 @@ export default {
   data () {
     return {
       scrollTop: 0, // 滚动视口
+      prizesList: [],
       lotteryPrizes: [
         '蒸羊羔',
         '蒸熊掌',
@@ -104,8 +112,9 @@ export default {
       form: {}, // 表单内容
       formButton: '', // 按钮内容
       lotteryVisible: false, // 中间弹框
-      lotteryTitle: '暂无内容',
-      resetVisible: false
+      lotteryContent: '暂无内容',
+      resetVisible: false,
+      flag: true
     }
   },
   /**
@@ -177,10 +186,14 @@ export default {
           ]
         }
       ]
-    },
-    // 转盘内容
-    prizes () {
-      const prizes = this.vuex_lottery.prizes
+    }
+  },
+  methods: {
+    /**
+     * 生成菜单项并保存
+     * @param prizes 菜单名数组
+     */
+    getPrizes (prizes) {
       const colors = this.colors
       const list = prizes.map((item, index) => {
         const color = index % 2 === 0 ? colors.color6 : colors.color3
@@ -195,10 +208,8 @@ export default {
           background: color
         }
       })
-      return list
-    }
-  },
-  methods: {
+      this.prizesList = list
+    },
     /**
      * 获取下标
      * @param name
@@ -245,6 +256,9 @@ export default {
       const lotteryPrizes = this.vuex_lottery.prizes
       const prizes = lotteryPrizes?.length ? lotteryPrizes : this.lotteryPrizes
       this.form = {}
+      // 生成转盘菜单
+      this.getPrizes(prizes)
+      // 生成表单
       prizes.forEach((item, index) => {
         this.$set(this.form, `name_${index}`, item)
       })
@@ -255,12 +269,13 @@ export default {
      * 点击抽奖按钮触发回调
      */
     startCallBack () {
+      this.flag = false
       // 先开始旋转
       this.$refs.myLucky.play()
       // 使用定时器来模拟请求接口
       setTimeout(() => {
         // 假设后端返回的中奖索引是0
-        const index = Math.floor(Math.random() * this.prizes.length)
+        const index = Math.floor(Math.random() * this.prizesList.length)
         // 调用stop停止旋转并传递中奖索引
         this.$refs.myLucky.stop(index)
       }, 3000)
@@ -273,7 +288,8 @@ export default {
       // 奖品详情
       const { fonts } = prize
       this.lotteryVisible = true
-      this.lotteryTitle = fonts[0].text || '暂无内容'
+      this.lotteryContent = fonts[0].text || '暂无内容'
+      this.flag = true
     },
     /**
      * 重置菜单
@@ -291,11 +307,12 @@ export default {
       const { form, formButton } = this
       // 保存按钮内容
       this.$u.vuex('vuex_lottery.button', formButton)
-      const arr = []
+      const menuList = []
       for (const key in form) {
-        arr.push(form[key])
+        menuList.push(form[key])
       }
-      this.$u.vuex('vuex_lottery.prizes', arr)
+      this.$u.vuex('vuex_lottery.prizes', menuList)
+      this.getPrizes(menuList)
     },
     /**
      * 删除一项菜单
@@ -317,6 +334,26 @@ export default {
       } else {
         this.$toast.none('不能再加了，好吃的太多了')
       }
+    },
+    /**
+     * 随机菜单
+     */
+    randomMenu () {
+      const menuList = this.getRandomMenu(menu.length, 8)
+      this.getPrizes(menuList)
+    },
+    /**
+     * 从menu生成随机数组
+     * @param length 最大值
+     * @param num 生成数量
+     * @returns {*[]}
+     */
+    getRandomMenu (length, num) {
+      const menuList = []
+      for (let i = 0; i < num; i++) {
+        menuList.push(menu[Math.floor(Math.random() * length)])
+      }
+      return menuList
     }
   }
 }
@@ -340,6 +377,7 @@ export default {
     justify-content: space-between;
     @include wh(100%, auto);
     padding: 50rpx 30rpx;
+    gap: 20rpx;
     &-setting{
       @include flexCenter;
       @include wh(250rpx, 90rpx);
