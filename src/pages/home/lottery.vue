@@ -78,6 +78,16 @@
         <view class="hint-title">重置后，你所保留的内容会消失！</view>
       </view>
     </s-popup>
+    <!-- 接入广告 -->
+    <!-- #ifndef MP-WEIXIN -->
+    <ad adpid="129182290608"
+        :ad-top="20"
+        @load="adLoad"
+        :ad-intervals="30"></ad>
+    <!-- #endif -->
+    <!-- #ifdef MP-WEIXIN -->
+<!--    <ad unit-id="129182290608"></ad>-->
+    <!-- #endif -->
   </view>
 </template>
 
@@ -189,6 +199,9 @@ export default {
     }
   },
   methods: {
+    adLoad () {
+      console.log('广告加载成功')
+    },
     /**
      * 生成菜单项并保存
      * @param prizes 菜单名数组
