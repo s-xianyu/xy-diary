@@ -48,13 +48,7 @@
   </view>
 </template>
 <script>
-import sCar from '@/components/s-car/index.vue'
-import sPopup from '@/components/s-popup/index.vue'
 export default {
-  components: {
-    sCar,
-    sPopup
-  },
   data () {
     return {
       profileList: [

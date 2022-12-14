@@ -95,14 +95,12 @@
 // #ifdef MP-WEIXIN
 import LuckyWheel from '@lucky-canvas/uni/lucky-wheel' // 大转盘
 // #endif
-import sPopup from '@/components/s-popup/index.vue'
 import { menu } from '@/utils/type'
 export default {
   components: {
     // #ifdef MP-WEIXIN
-    LuckyWheel,
+    LuckyWheel
     // #endif
-    sPopup
   },
   data () {
     return {

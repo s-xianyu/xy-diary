@@ -3,6 +3,7 @@ const pages = require('./router')
 const tabBar = require('./utils/tabBar')
 const data = {
   easycom: {
+    '^s-(.*)': '@/components/s-$1/index.vue',
     '^u-(.*)': 'uview-ui/components/u-$1/u-$1.vue'
   },
   pages: pages,

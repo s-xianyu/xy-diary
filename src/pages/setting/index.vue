@@ -51,11 +51,7 @@
 </template>
 
 <script>
-import sCar from '@/components/s-car/index.vue'
 export default {
-  components: {
-    sCar
-  },
   data () {
     return {
       pageLoading: true,
