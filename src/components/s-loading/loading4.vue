@@ -1,5 +1,5 @@
 <template>
-  <view class="container loading5">
+  <view class="container loading4">
     <view class="shape shape1"></view>
     <view class="shape shape2"></view>
     <view class="shape shape3"></view>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'loading5',
+  name: 'loading4',
   data () {
     return {
 
@@ -25,7 +25,7 @@ export default {
   position: relative;
 }
 
-.container.loading5 .shape {
+.container.loading4 .shape {
   width: 15px;
   height: 15px;
 }
@@ -54,7 +54,7 @@ export default {
   background-color: #EE6666;
 }
 
-.loading5 .shape1 {
+.loading4 .shape1 {
   animation: animation5shape1 2s ease 0s infinite reverse;
 }
 
@@ -95,7 +95,7 @@ export default {
             transform: translate(15px, 0);
   }
 }
-.loading5 .shape2 {
+.loading4 .shape2 {
   animation: animation5shape2 2s ease 0s infinite reverse;
 }
 
@@ -136,7 +136,7 @@ export default {
             transform: translate(0, 15px);
   }
 }
-.loading5 .shape3 {
+.loading4 .shape3 {
   animation: animation5shape3 2s ease 0s infinite reverse;
 }
 
@@ -177,7 +177,7 @@ export default {
             transform: translate(0, -15px);
   }
 }
-.loading5 .shape4 {
+.loading4 .shape4 {
   animation: animation5shape4 2s ease 0s infinite reverse;
 }
 

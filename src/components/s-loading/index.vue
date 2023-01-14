@@ -10,9 +10,10 @@ import Loading2 from './loading2.vue'
 import Loading3 from './loading3.vue'
 import Loading4 from './loading4.vue'
 import Loading5 from './loading5.vue'
+import Loading6 from './loading6.vue'
 export default {
   name: 's-loading',
-  components: { Loading1, Loading2, Loading3, Loading4, Loading5 },
+  components: { Loading1, Loading2, Loading3, Loading4, Loading5, Loading6 },
   props: {
     loadingType: {
       type: [Number, String],

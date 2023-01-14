@@ -1,5 +1,5 @@
 <template>
-  <view class="container loading6">
+  <view class="container loading5">
     <view class="shape shape1"></view>
     <view class="shape shape2"></view>
     <view class="shape shape3"></view>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'loading6',
+  name: 'loading5',
   data () {
     return {
 
@@ -24,11 +24,11 @@ export default {
   position: relative;
 }
 
-.container.loading6 {
+.container.loading5 {
   -webkit-animation: rotation 1s infinite;
           animation: rotation 1s infinite;
 }
-.container.loading6 .shape {
+.container.loading5 .shape {
   width: 12px;
   height: 12px;
   border-radius: 2px;
@@ -57,7 +57,7 @@ export default {
   background-color: #EE6666;
 }
 
-.loading6 .shape1 {
+.loading5 .shape1 {
   -webkit-animation: animation6shape1 2s linear 0s infinite normal;
           animation: animation6shape1 2s linear 0s infinite normal;
 }
@@ -99,7 +99,7 @@ export default {
             transform: translate(18px, 0);
   }
 }
-.loading6 .shape2 {
+.loading5 .shape2 {
   -webkit-animation: animation6shape2 2s linear 0s infinite normal;
           animation: animation6shape2 2s linear 0s infinite normal;
 }
@@ -141,7 +141,7 @@ export default {
             transform: translate(0, 18px);
   }
 }
-.loading6 .shape3 {
+.loading5 .shape3 {
   -webkit-animation: animation6shape3 2s linear 0s infinite normal;
           animation: animation6shape3 2s linear 0s infinite normal;
 }
@@ -183,7 +183,7 @@ export default {
             transform: translate(0, -18px);
   }
 }
-.loading6 .shape4 {
+.loading5 .shape4 {
   -webkit-animation: animation6shape4 2s linear 0s infinite normal;
           animation: animation6shape4 2s linear 0s infinite normal;
 }
