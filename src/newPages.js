@@ -11,7 +11,7 @@ const data = {
     maxWidth: 500,
     rpxCalcMaxDeviceWidth: 375,
     // #ifndef APP-PLUS
-    navigationStyle: 'default',
+    navigationStyle: 'custom',
     // #endif
     navigationBarTextStyle: 'black',
     navigationBarBackgroundColor: '#FFF5E4',
