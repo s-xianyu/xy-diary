@@ -10,9 +10,7 @@ const data = {
   globalStyle: {
     maxWidth: 500,
     rpxCalcMaxDeviceWidth: 375,
-    // #ifndef APP-PLUS
     navigationStyle: 'custom',
-    // #endif
     navigationBarTextStyle: 'black',
     navigationBarBackgroundColor: '#FFF5E4',
     backgroundColor: '#FFF5E4'
