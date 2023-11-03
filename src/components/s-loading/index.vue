@@ -1,6 +1,11 @@
 <template>
   <view class="loading">
-    <component :is="`Loading${loadingType}`"></component>
+    <loading1 v-if="loadingType === 1"></loading1>
+    <loading2 v-if="loadingType === 2"></loading2>
+    <loading3 v-if="loadingType === 3"></loading3>
+    <loading4 v-if="loadingType === 4"></loading4>
+    <loading5 v-if="loadingType === 5"></loading5>
+    <loading6 v-if="loadingType === 6"></loading6>
   </view>
 </template>
 

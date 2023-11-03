@@ -18,6 +18,12 @@ module.exports = [
     }
   },
   {
+    path: 'pages/home/happy/2048',
+    style: {
+      navigationBarTitleText: '2048小游戏'
+    }
+  },
+  {
     path: 'pages/setting/index',
     style: {
       navigationBarTitleText: '咸鱼日记'
