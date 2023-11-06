@@ -24,6 +24,18 @@ module.exports = [
     }
   },
   {
+    path: 'pages/home/happy/tetris',
+    style: {
+      navigationBarTitleText: '俄罗斯方块'
+    }
+  },
+  {
+    path: 'pages/home/happy/fish',
+    style: {
+      navigationBarTitleText: '电子木鱼'
+    }
+  },
+  {
     path: 'pages/setting/index',
     style: {
       navigationBarTitleText: '咸鱼日记'

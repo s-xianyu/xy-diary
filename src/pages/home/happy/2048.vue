@@ -44,7 +44,7 @@ export default {
       list: [],
       intiNum: [2, 4],
       pr: 0.9,
-      bestScore: uni.getStorageSync('bestScore'),
+      bestScore: uni.getStorageSync('bestScore') || 0,
       over: false,
       direction: [{
         x: 0,

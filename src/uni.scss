@@ -126,6 +126,12 @@ body,html{
   font-weight: bold;
   font-style: normal;
 }
+@font-face {
+  font-family: 'geetype';
+  src: url('https://schbrain-static-online.oss-cn-hangzhou.aliyuncs.com/resources/geetype.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
 ::v-deep{
   .deep-class{
     .uni-picker-container{

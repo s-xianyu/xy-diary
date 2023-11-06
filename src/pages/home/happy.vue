@@ -26,9 +26,19 @@ export default {
     return {
       happyList: [
         {
+          label: '俄罗斯方块',
+          mark: '游戏',
+          path: 'tetris'
+        },
+        {
           label: '2048',
           mark: '游戏',
           path: '2048'
+        },
+        {
+          label: '功德+1',
+          mark: '游戏',
+          path: 'fish'
         }
       ]
     }
@@ -48,9 +58,10 @@ export default {
   padding: 30rpx;
   @include flexCenter;
   flex-wrap: wrap;
+  justify-content: flex-start;
   gap:30rpx;
   &-item{
-    flex:1;
+    width: calc(50% - 16rpx);
     .content{
       display: block;
       .box{
@@ -58,10 +69,10 @@ export default {
         height: 300rpx;
         @include flexCenter;
         &-label{
-          font-size: 72rpx;
+          font-size: 44rpx;
           font-weight: bold;
           letter-spacing: 10rpx;
-          font-family: fantasy;
+          font-family: geetype;
         }
         &-mark{
           width: 80rpx;

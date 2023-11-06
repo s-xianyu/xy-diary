@@ -14,7 +14,8 @@ try {
 // 需要永久存储，且下次APP启动需要取出的，在state中的变量名
 const saveStateKeys = [
   'vuex_user',
-  'vuex_lottery'
+  'vuex_lottery',
+  'vuex_fish'
 ]
 
 // 保存变量到本地存储中
@@ -54,7 +55,10 @@ const store = new Vuex.Store({
       button: '今天吃啥'
     },
     // 如果vuex_version无需保存到本地永久存储，无需lifeData.vuex_version方式
-    vuex_version: '1.0.0'
+    vuex_version: '1.0.0',
+    vuex_fish: lifeData.vuex_fish ? lifeData.vuex_fish : {
+      count: ''
+    }
   },
   mutations: {
     $uStore (state, payload) {
