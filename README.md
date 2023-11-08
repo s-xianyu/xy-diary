@@ -1,4 +1,11 @@
 # xy-diary
+## 项目介绍
+<font color="red">一、使用本项目请标注( cmy and s-xianyu)</font>
+<br>
+<font color="red">二、使用本项目二次开发请联系作者</font>
+#### 微信：s-xianyu
+#### 邮箱：s22539634@aliyun.com
+#### 企鹅：22539634
 
 ## Project setup
 ```
@@ -33,6 +40,21 @@ yarn serve
 ```
 yarn build
 ```
+
+## 应用截图
+
+### 首页
+[![pi1ySFU.png](https://z1.ax1x.com/2023/11/08/pi1ySFU.png)](https://imgse.com/i/pi1ySFU)
+### 关于
+[![pi1sxoT.png](https://z1.ax1x.com/2023/11/08/pi1sxoT.png)](https://imgse.com/i/pi1sxoT)
+### 吃饭时间到《转盘》
+[![pi1sje0.png](https://z1.ax1x.com/2023/11/08/pi1sje0.png)](https://imgse.com/i/pi1sje0)
+### 下班做啥呀《游戏： 2048》
+[![pi1sLyn.png](https://z1.ax1x.com/2023/11/08/pi1sLyn.png)](https://imgse.com/i/pi1sLyn)
+### 下班做啥呀《游戏： 俄罗斯方块》
+[![pi1sOLq.png](https://z1.ax1x.com/2023/11/08/pi1sOLq.png)](https://imgse.com/i/pi1sOLq)
+### 下班做啥呀《游戏： 敲木鱼》
+[![pi1svwV.png](https://z1.ax1x.com/2023/11/08/pi1svwV.png)](https://imgse.com/i/pi1svwV)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
