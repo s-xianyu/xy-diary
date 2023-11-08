@@ -183,6 +183,7 @@
     <!-- 发薪日选择框 -->
     <s-popup :visible.sync="payVisible"
              @commit="payCommit"
+             z-index="998"
              title="请选择发薪日">
       <view class="popup">
         <view class="picker">
