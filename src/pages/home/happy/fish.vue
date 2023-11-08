@@ -39,6 +39,7 @@
         v-else
         class="footer-btn"
         @click="toggleAuto(false)">取消自动敲鱼</view>
+      <view class="footer-btn" @click="reload">重置</view>
     </view>
   </view>
 </template>
@@ -131,6 +132,9 @@ export default {
           this.tipsList.shift()
         }
       }, 300)
+    },
+    reload () {
+      this.$u.vuex('vuex_fish.count', 0)
     }
   }
 }
