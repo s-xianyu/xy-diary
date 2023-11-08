@@ -40,7 +40,7 @@ export default {
     },
     width: {
       type: [String, Number],
-      default: '70%'
+      default: '80%'
     },
     title: {
       type: String,

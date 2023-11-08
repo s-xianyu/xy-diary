@@ -164,7 +164,6 @@
     <s-loading v-else/>
     <!-- 休息日选择框 -->
     <s-popup :visible.sync="vacationVisible"
-             width="65%"
              @commit="vacationCommit"
              title="请选择休息日">
       <view class="popup">
