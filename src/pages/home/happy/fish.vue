@@ -30,7 +30,7 @@
       <view
         v-else
         class="footer-btn"
-        @click="toggleImmerse(false)">取消沉浸模式</view>
+        @click="toggleImmerse(false)">取消沉浸</view>
       <view
         v-if="!isAuto"
         class="footer-btn"
@@ -38,7 +38,7 @@
       <view
         v-else
         class="footer-btn"
-        @click="toggleAuto(false)">取消自动敲鱼</view>
+        @click="toggleAuto(false)">取消自动</view>
       <view class="footer-btn" @click="reload">重置</view>
     </view>
   </view>
