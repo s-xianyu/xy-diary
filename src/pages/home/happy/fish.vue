@@ -39,8 +39,13 @@
         v-else
         class="footer-btn"
         @click="toggleAuto(false)">取消自动</view>
-      <view class="footer-btn" @click="reload">重置</view>
+      <view class="footer-btn" @click="visible = true">重置</view>
     </view>
+    <s-popup :visible.sync="visible"
+             title="确认清空吗？"
+             @commit="reload">
+      <div class="message">重置后，功德值会清空，请谨慎操作!</div>
+    </s-popup>
   </view>
 </template>
 
@@ -65,15 +70,20 @@ export default {
       isImmerse: false,
       isAuto: false,
       interval: null,
-      fishActive: false
+      fishActive: false,
+      visible: false
     }
   },
-  mounted () {
+  onShow () {
     setTimeout(() => {
       this.bgmPlay()
     }, 1000)
+    this.toggleAuto(this.isAuto)
   },
-  destroyed () {
+  onHide () {
+    bgm.pause()
+  },
+  onUnload () {
     clearInterval(this.interval)
     bgm.destroy()
     audio.destroy()
@@ -163,7 +173,10 @@ export default {
 .fish{
   font-family: geetype;
   background-color: #000;
+  height: calc(100vh - 88rpx);
+  /* #ifdef MP-WEIXIN */
   height: 100vh;
+  /* #endif */
   width: 100%;
   @include flexCenter;
   flex-direction: column;
@@ -233,6 +246,11 @@ export default {
         color: #000;
       }
     }
+  }
+  .message{
+    font-size: 40rpx;
+    text-align: center;
+    padding: 50rpx 20rpx;
   }
 }
 </style>

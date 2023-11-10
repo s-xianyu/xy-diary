@@ -298,7 +298,7 @@ export default {
         this.pageLoading = false
       })
       // #ifdef MP-WEIXIN
-      const { imgurl } = await this.$u.api.getBiturl().finally(() => {
+      const { imgurl } = await this.$u.api.getHitokoto().finally(() => {
         this.pageLoading = false
       })
       this.imgurl = imgurl || ''

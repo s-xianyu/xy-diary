@@ -32,7 +32,8 @@ module.exports = [
   {
     path: 'pages/home/happy/fish',
     style: {
-      navigationBarTitleText: '电子木鱼'
+      navigationBarTitleText: '电子木鱼',
+      navigationBarBackgroundColor: '#000'
     }
   },
   {

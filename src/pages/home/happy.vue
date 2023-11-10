@@ -37,7 +37,7 @@ export default {
         },
         {
           label: '功德+1',
-          mark: '游戏',
+          mark: '养生',
           path: 'fish'
         }
       ]

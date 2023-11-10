@@ -45,7 +45,7 @@ const install = (Vue, vm) => {
       // 如果把originalData设置为了true，这里return回什么，this.$u.post的then回调中就会得到什么
       return res.data
     } else {
-      const message = /.*[\u4e00-\u9fa5]+.*$/.test(res.data.message) ? res.data.message : '服务异常请重试'
+      const message = /.*[\u4e00-\u9fa5]+.*$/.test(res.data?.message) ? res.data?.message : '服务异常请重试'
       vm.$toast.error(message)
       return false
     }

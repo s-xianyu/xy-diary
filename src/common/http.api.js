@@ -4,9 +4,9 @@ const install = (Vue, vm) => {
   vm.$u.api = {
     getHitokoto: (params = {}) => vm.$u.get('https://international.v1.hitokoto.cn/', params),
     getBiturl: (params = {}) => vm.$u.get('https://api.ixiaowai.cn/mcapi/mcapi.php?return=json', params),
-    getGqapi: (params = {}) => vm.$u.get('https://api.ixiaowai.cn/gqapi/gqapi.php?return=json', params),
-    getBiturl2: (params = {}) => vm.$u.get('/api/mcapi/mcapi.php?return=json', params),
-    getYlapi: (params = {}) => vm.$u.get('/api/ylapi/index.php/?code=json', params)
+    getGqapi: (params = {}) => vm.$u.get('https://api.ixiaowai.cn/gqapi/gqapi.php?return=json', params)
+    // getBiturl2: (params = {}) => vm.$u.get('/api/mcapi/mcapi.php?return=json', params),
+    // getYlapi: (params = {}) => vm.$u.get('/api/ylapi/index.php/?code=json', params)
   }
 }
 
