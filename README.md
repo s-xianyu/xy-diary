@@ -30,7 +30,7 @@ yarn build:wx
 ```
 
 
-### 微信小程序二维码
+### 微信小程序二维码(微信管控已下架）
 
 ![Snipaste_2022-11-25_11-13-17 _1_.png](https://s2.loli.net/2022/11/25/mQKp2cBIOYGD7xd.png)
 
