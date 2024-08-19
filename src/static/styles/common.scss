@@ -1,0 +1,43 @@
+page {
+  background: #fff5e4;
+  font-size: 20rpx;
+}
+/* 单行文字隐藏 */
+.elp{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+}
+.pointer {
+  pointer-events: none;
+}
+/* 按钮置灰 */
+.disabled{
+  opacity: .3;
+  filter: grayscale(100%);
+}
+/* u-search icon 搜索兼容 */
+[type="search"]::-webkit-search-decoration {
+  display: none;
+}
+
+@font-face {
+  font-family: 'xy';
+  src: url('https://schbrain-static-online.oss-cn-hangzhou.aliyuncs.com/resources/xy.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'geetype';
+  src: url('https://schbrain-static-online.oss-cn-hangzhou.aliyuncs.com/resources/geetype.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+::v-deep{
+  .deep-class{
+    .uni-picker-container{
+      z-index: 100000!important;
+    }
+  }
+}

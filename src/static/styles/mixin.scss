@@ -1,0 +1,79 @@
+$uni-width: 1000rpx;
+
+//主题色
+$uni-color: #fad434;
+//背景色
+$uni-color-bg: #FFF5E4;
+//字体色
+$uni-font: #090300;
+$uni-radius: 10rpx;
+
+//背景图片
+@mixin bis($url) {
+  background: {
+    image:url($url);
+    repeat: no-repeat;
+    size: 100% 100%;
+  }
+}
+
+//fixed位置
+@mixin fixed($position, $rem ) {
+  position: fixed;
+  @if $position == top {
+    top: $rem;
+    right: 0;
+    left: 0;
+  } @else if $position == bottom {
+    right: 0;
+    bottom: $rem;
+    left: 0;
+  } @else if $position == left {
+    top: 0;
+    bottom: 0;
+    left: $rem;
+  } @else if $position == right {
+    top: 0;
+    right: $rem;
+    bottom: 0;
+  } @else if $position == center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% -50%);
+  }
+}
+
+//定位居中
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//宽and高
+@mixin wh($width,$height){
+  width: $width;
+  height:$height;
+}
+
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {
+  font: #{$size}/#{$line-height} $family;
+}
+
+//flex
+@mixin flexCenter{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+//flex列水平居中
+@mixin flexCenterCol{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+

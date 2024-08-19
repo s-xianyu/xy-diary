@@ -1,0 +1,92 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^u--(.*)": "uview-plus/components/u-$1/u-$1.vue",
+      "^up-(.*)": "uview-plus/components/u-$1/u-$1.vue",
+      "^u-([^-].*)": "uview-plus/components/u-$1/u-$1.vue",
+      "^s-([^-].*)": "@/components/s-$1/index.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/home/index",
+      "style": {
+        "navigationBarTitleText": "咸鱼日记"
+      }
+    },
+    {
+      "path": "pages/setting/index",
+      "style": {
+        "navigationBarTitleText": "设置"
+      }
+    },
+    {
+      "path": "pages/lottery/index",
+      "style": {
+        "navigationBarTitleText": "吃饭时间到"
+      }
+    },
+    {
+      "path": "pages/happy/index",
+      "style": {
+        "navigationBarTitleText": "下班做啥呀"
+      }
+    },
+    {
+      "path": "pages/happy/fish",
+      "style": {
+        "navigationBarTitleText": "敲木鱼"
+      }
+    },
+    {
+      "path": "pages/happy/2048",
+      "style": {
+        "navigationBarTitleText": "2048"
+      }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationBarTitleText": "咸鱼日记"
+      }
+    },
+    {
+      "path": "pages/profile/about/index",
+      "style": {
+        "navigationBarTitleText": "关于咸鱼日记"
+      }
+    }
+  ],
+  "subPackages": [],
+  "globalStyle": {
+    "maxWidth": 500,
+    "rpxCalcIncludeWidth": 500,
+    "navigationStyle": "default",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#FFF5E4",
+    "backgroundColor": "#FFF5E4"
+  },
+  "tabBar": {
+    "color": "#B7C4CF",
+    "selectedColor": "#090300",
+    "borderStyle": "white",
+    "fontSize": "12px",
+    "backgroundColor": "#FFF5E4",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "/static/image/home.png",
+        "selectedIconPath": "/static/image/home-active.png",
+        "text": "咸鱼",
+        "customIcon": false
+      }, {
+        "pagePath": "pages/profile/index",
+        "iconPath": "/static/image/me.png",
+        "selectedIconPath": "/static/image/me-active.png",
+        "text": "日记",
+        "customIcon": false
+      }
+    ]
+  }
+}
