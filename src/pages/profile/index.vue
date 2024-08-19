@@ -17,6 +17,7 @@
       <view class="organizer">
         <view>Organizer by @咸鱼日记</view>
         <view>Author: cmy and s-xianyu</view>
+        <view>备案: 浙ICP备2024227245号</view>
       </view>
     </view>
     <!-- 发薪日选择框 -->
