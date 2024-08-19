@@ -6,61 +6,66 @@
         <view class="header">
           <view></view>
           <view class="header-title">摸鱼时间</view>
-          <navigator url="/pages/setting/index" class="header-setting">
+          <view class="header-setting" @click="toUrl('/pages/setting/index')">
             <text>设置</text>
-            <u-icon :color="$variables.fontColor" name="arrow-right-double"/>
-          </navigator>
+            <u-icon name="arrow-right-double" />
+          </view>
         </view>
         <view class="box">
           <view class="box-year">
-            <text>{{ date.Y }}</text>年
-            <text>{{ date.M }}</text>月
-            <text>{{ date.D }}</text>天
+            <text class="text">{{ date.Y.value }}</text>
+            <text class="dot">年</text>
+            <text class="text">{{ date.M.value }}</text>
+            <text class="dot">月</text>
+            <text class="text">{{ date.D.value }}</text>
+            <text class="dot">天</text>
           </view>
           <view class="box-data">
-            <text>{{ date.hh }}</text>:
-            <text>{{ date.mm }}</text>:
-            <text>{{ date.ss }}</text>
+            <text class="text">{{ date.hh.value }}</text>
+            <text class="dot">:</text>
+            <text class="text">{{ date.mm.value }}</text>
+            <text class="dot">:</text>
+            <text class="text">{{ date.ss.value }}</text>
           </view>
         </view>
       </s-car>
       <!-- 间距 -->
-      <view class="gap">
-        <view></view>
-        <view></view>
-      </view>
+      <s-space />
       <!-- 退休时间 -->
       <s-car :border="true">
         <view class="header">
-          <view class="header-title">退休时间：{{retirement}}</view>
+          <view class="header-title">退休时间：{{ workDate.retirement.value }}</view>
         </view>
         <view class="box">
-          <template v-if="vuex_user.retirementMoney > 0">
+          <template v-if="workDate.retirementMoney.value">
             <view>距退休还剩</view>
             <view class="box-retirement">
-              <text>{{ workDate.Y }}</text>年
-              <text>{{ workDate.M }}</text>月
-              <text>{{ workDate.D }}</text>天
-              <text>{{ workDate.hh }}</text>时
-              <text>{{ workDate.mm }}</text>分
-              <text>{{ workDate.ss }}</text>秒
+              <text class="text">{{ workDate.Y.value }}</text>
+              <text class="dot">年</text>
+              <text class="text">{{ workDate.M.value }}</text>
+              <text class="dot">月</text>
+              <text class="text">{{ workDate.D.value }}</text>
+              <text class="dot">天</text>
+              <text class="text">{{ workDate.hh.value }}</text>
+              <text class="dot">时</text>
+              <text class="text">{{ workDate.mm.value }}</text>
+              <text class="dot">分</text>
+              <text class="text">{{ workDate.ss.value }}</text>
+              <text class="dot">秒</text>
             </view>
             <view>还能到手的薪资为</view>
             <view class="box-retirement">
-              <text>￥{{ vuex_user.retirementMoney }}</text>
+              <text class="box-retirement-money">￥{{ workDate.retirementMoney.value }}</text>
             </view>
           </template>
-          <view class="box-text" v-else>
+          <view v-else class="box-text">
             <text>终于熬到退休啦！</text>
-            <image class="image" src="../../static/image/home/4.png"></image>
+            <image class="image" src="https://s21.ax1x.com/2024/08/19/pAPljC4.png"></image>
           </view>
         </view>
       </s-car>
       <!-- 间距 -->
-      <view class="gap">
-        <view></view>
-        <view></view>
-      </view>
+      <s-space />
       <!-- 今日收入 -->
       <s-car :border="true">
         <view class="header fl">
@@ -69,452 +74,207 @@
         <view class="box">
           <view class="box-days">
             <view class="money">
-              <template v-if="vuex_user.retirementMoney > 0">
+              <template v-if="workDate.retirementMoney.value">
                 <view>今日到手薪资</view>
-                <view>￥<text>{{ vuex_user.dayMoney }}</text></view>
+                <view>
+                  ￥
+                  <text>{{ workDate.dayMoney.value }}</text>
+                </view>
               </template>
-              <view class="no" v-else>退休没工资了哦</view>
-              <image class="image" src="../../static/image/home/9.png"></image>
+              <view v-else class="no">{{
+                workDate.retirementMoney.value && vacation.day.value ? "今日休息" : "退休没工资了哦"
+              }}</view>
+              <image class="image" src="https://s21.ax1x.com/2024/08/19/pAPG6zQ.png"></image>
             </view>
           </view>
         </view>
       </s-car>
-      <view class="gap">
-        <view></view>
-        <view></view>
-      </view>
+      <s-space />
       <view class="row">
-        <navigator
-          :url="`/pages/home/${ item.path }`"
-          class="row-item"
-          v-for="(item, index) in rowList"
-          :key="index">
+        <view v-for="(item, index) in rowList" :key="index" class="row-item" @click="toUrl(`/pages/${item.path}/index`)">
           <s-car :border="false">
             <view class="content">
               <view class="content-label">{{ item.label }}</view>
               <view class="content-main">
                 <view class="icon">
-                  <u-icon name="arrow-right" :color="$variables.fontColor" size="28"/>
+                  <u-icon name="arrow-right" size="14" />
                 </view>
                 <view class="img">
-                  <image
-                    class="img-i"
-                    :src="require(`@/static/image/home/${ item.img }`)"></image>
+                  <image :src="item.img" class="img-i"></image>
                 </view>
               </view>
             </view>
           </s-car>
-        </navigator>
+        </view>
       </view>
       <!-- 间距 -->
-      <view class="gap">
-        <view></view>
-        <view></view>
-      </view>
+      <s-space />
       <!-- 每日一言 -->
       <s-car :border="true">
         <view class="header">
           <view class="header-title">每日一言</view>
-          <view class="header-setting" @click="$u.throttle(getHitokoto, 2000, true)">
+          <view class="header-setting" @click="throttle(getHitokoto, 2000, true)">
             <text>换一句</text>
           </view>
         </view>
-        <view class="box" :class="boxClassName">
-          <view class="box-bg">
-            <image class="bg" :src="imgurl"></image>
-          </view>
+        <view class="box">
           <view class="box-hitokoto">
             <view class="box-hitokoto-title">
-              <text>{{hitokoto.hitokoto || ''}}</text>
+              <text>{{ hitokotoInfo.hitokoto || "" }}</text>
             </view>
             <view class="box-hitokoto-who">
-              <text>-- {{hitokoto.from_who || hitokoto.creator || ''}}</text>
-              <text>《{{hitokoto.from || '--'}}》</text>
+              <text>-- {{ hitokotoInfo.from_who || hitokotoInfo.creator || "" }}</text>
+              <text>《{{ hitokotoInfo.from || "--" }}》</text>
             </view>
           </view>
         </view>
       </s-car>
-      <u-gap height="20" bg-color="#0000"/>
+      <u-gap bg-color="#0000" height="20" />
       <!-- 休息日 -->
       <s-car :border="false">
-        <view class="box" @click="vacationVisible = true">
+        <view class="box" @click="vacation.visible.value = true">
           <view class="box-vacation">
-            <view class="box-vacation-title">{{ vacationObj.title }}</view>
-            <view class="box-vacation-number" v-if="vacationObj.day > 0">
-              <text>{{ vacationObj.day }}</text>天
+            <view class="box-vacation-title">{{ vacation.title.value }}</view>
+            <view v-if="vacation.day.value">
+              <text class="box-vacation-number">{{ vacation.day.value }}</text>
+              <text>天</text>
             </view>
           </view>
         </view>
       </s-car>
-      <u-gap height="20" bg-color="#0000"/>
+      <u-gap bg-color="#0000" height="20" />
       <!-- 发薪日 -->
       <s-car :border="false">
-        <view class="box" @click="payVisible = true">
+        <view class="box" @click="pay.visible.value = true">
           <view class="box-vacation">
             <view class="box-vacation-title">
-              {{ vuex_user.payDay === 0 ? '今天发工资啦！' : '距离发薪日还有' }}
+              {{ pay.payDay.value === 0 ? "今天发工资啦！" : "距离发薪日还有" }}
             </view>
-            <view class="box-vacation-number"  v-if="vuex_user.payDay > 0">
-              <text>{{ vuex_user.payDay }}</text>天
+            <view v-if="pay.payDay.value">
+              <text class="box-vacation-number">{{ pay.payDay.value }}</text>
+              <text>天</text>
             </view>
           </view>
         </view>
       </s-car>
     </template>
-    <s-loading v-else/>
+    <s-loading v-else />
     <!-- 休息日选择框 -->
-    <s-popup :visible.sync="vacationVisible"
-             @commit="vacationCommit"
-             title="请选择休息日">
+    <s-popup v-model:show="vacation.visible.value" title="请选择休息日" @commit="vacation.commit">
       <view class="popup">
         <view class="check">
-          <view class="check-item"
-                v-for="(item, index) in vacationList"
-                @click.stop="toggleCheck(item)"
-                :key="index">
-            <text>{{item.name}}</text>
-            <viewv class="icons" :class="{check: item.checked}">
-              <u-icon v-if="item.checked" class="icons-i" name="checkbox-mark" size="14"></u-icon>
-            </viewv>
+          <view
+            v-for="(item, index) in vacation.vacationList.value"
+            :key="index"
+            :class="{ active: item.checked }"
+            class="check-item"
+            @click.stop="item.checked = !item.checked"
+          >
+            <text>{{ item.name }}</text>
+            <view class="icons">
+              <u-icon v-if="item.checked" class="icons-i" name="checkmark-circle-fill" size="18"></u-icon>
+              <u-icon v-else class="icons-i" name="checkmark-circle" size="18"></u-icon>
+            </view>
           </view>
         </view>
       </view>
     </s-popup>
-    <!-- 发薪日选择框 -->
-    <s-popup :visible.sync="payVisible"
-             @commit="payCommit"
-             z-index="998"
-             title="请选择发薪日">
-      <view class="popup">
-        <view class="picker">
-          <text>每月</text>
-          <picker class="picker-box"
-                  :value="payIndex"
-                  :range="payList"
-                  range-key="label"
-                  @change="payChange">
-            <view class="uni-input">{{ payTitle }}</view>
-          </picker>
-          <text>日发薪</text>
-        </view>
-      </view>
-    </s-popup>
+    <!-- 休息日选择框 -->
+    <u-picker
+      :columns="pay.payColumns.value"
+      :default-index="[pay.payIndex.value - 1]"
+      :show="pay.visible.value"
+      close-on-click-overlay
+      title="选择发薪日期"
+      @cancel="pay.visible.value = false"
+      @close="pay.visible.value = false"
+      @confirm="pay.commit"
+    ></u-picker>
   </view>
 </template>
-<script>
-import moment from 'moment'
-export default {
-  data () {
-    return {
-      pageLoading: true,
-      title: '首页',
-      date: {},
-      retirement: '',
-      workDate: {},
-      setInterval: null,
-      hitokoto: {},
-      vacationVisible: false,
-      vacationList: [
-        { name: '星期一', checked: false },
-        { name: '星期二', checked: false },
-        { name: '星期三', checked: false },
-        { name: '星期四', checked: false },
-        { name: '星期五', checked: false },
-        { name: '星期六', checked: false },
-        { name: '星期日', checked: false }
-      ],
-      vacationObj: {
-        day: 0,
-        title: '距离放假还有'
-      },
-      payVisible: false,
-      payList: [],
-      payTitle: 0,
-      imgurl: '',
-      rowList: [
-        { label: '吃饭时间到', img: '1.png', path: 'lottery' },
-        { label: '下班做啥呀', img: '3.png', path: 'happy' }
-      ]
-    }
-  },
-  async onLoad () {
-    this.getHitokoto()
-    for (let i = 1; i < 31; i++) {
-      this.payList.push({
-        label: i + '日',
-        value: i
-      })
-    }
-    this.payTitle = this.vuex_user.payTitle
-    this.vacationList = this.vacationList.map(item => {
-      item.checked = this.vuex_user.vacationList.includes(item.name)
-      return item
+<script lang="ts" setup>
+import sSpace from "@/components/s-space/index.vue";
+import { useDate } from "@/pages/home/hooks/useDate";
+import { useWorkDate } from "@/pages/home/hooks/useWorkDate";
+import { throttle } from "uview-plus";
+import { getHitokotoApi } from "@/api/modules/user";
+import { useVacation } from "@/pages/home/hooks/useVacation";
+import { usePay } from "@/pages/home/hooks/usePay";
+import type { Home } from "@/pages/home/interface";
+const pageLoading = ref(false);
+const date = useDate();
+const workDate = useWorkDate();
+const vacation = useVacation();
+const pay = usePay();
+const rowList = ref([
+  { label: "吃饭时间到", img: "https://s21.ax1x.com/2024/08/19/pAPlx29.png", path: "lottery" },
+  { label: "下班做啥呀", img: "https://s21.ax1x.com/2024/08/19/pAPlv8J.png", path: "happy" }
+]);
+onLoad(() => getHitokoto());
+onShareAppMessage(() => ({ title: "咸鱼日记" }));
+const toUrl = (url: string) => uni.navigateTo({ url });
+const hitokotoInfo = ref<Home.HitokotoInfo>({
+  hitokoto: "",
+  from: "",
+  from_who: "",
+  creator: ""
+});
+const getHitokoto = () => {
+  getHitokotoApi()
+    .then(({ data }) => {
+      hitokotoInfo.value = data;
     })
-    this.getWeek() // 获取放假日
-  },
-  async onShow () {
-    await this.getData()
-    await this.getRetirement() // 获取退休日
-    await this.getPayData() // 获取发薪日
-    this.setInterval = setInterval(() => {
-      this.getData()
-    }, 1000)
-  },
-  onHide () {
-    clearTimeout(this.setInterval)
-  },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage () {
-    return {
-      title: '咸鱼日记'
-    }
-  },
-  onShareTimeline () {
-    return {
-      title: '咸鱼日记'
-    }
-  },
-  computed: {
-    payIndex () {
-      return this.payList.findIndex(i => i.value === this.payTitle)
-    },
-    boxClassName () {
-      let className = 'h5'
-      // #ifdef MP-WEIXIN
-      className = 'mp-weixin'
-      // #endif
-      return className
-    }
-  },
-  methods: {
-    /**
-     * 一言获取
-     * @returns {Promise<void>}
-     */
-    async getHitokoto () {
-      this.hitokoto = await this.$u.api.getHitokoto().finally(() => {
-        this.pageLoading = false
-      })
-      // #ifdef MP-WEIXIN
-      const { imgurl } = await this.$u.api.getHitokoto().finally(() => {
-        this.pageLoading = false
-      })
-      this.imgurl = imgurl || ''
-      // #endif
-    },
-    /**
-     * 获取退休日
-     */
-    getRetirement () {
-      const info = this.vuex_user
-      const Y = moment(info.birthData).format('YYYY')
-      const M = moment(info.birthData).format('MM')
-      const D = moment(info.birthData).format('DD')
-      this.retirement = (Number(Y) + Number(info.retirement) + '-' + M + '-' + D)
-    },
-    /**
-     * 星期处理
-     */
-    getWeek () {
-      const index = new Date().getDay() - 1
-      const list = [...this.vacationList, ...this.vacationList]
-      list.splice(0, index)
-      const day = this.vacationObj.day = list.findIndex(item => item.checked)
-      const title = day > 0 ? '距离放假还有' : (this.vuex_user.vacationList.length === 7 || day === 0) ? '今天休息日，开心' : '可怕，不休息的吗'
-      this.vacationObj = {
-        day,
-        title
-      }
-    },
-    /**
-     * 定时器获取数据
-     */
-    getData () {
-      this.getSelfData()
-      this.getWorkData()
-      this.getRetirementMoney()
-      this.getDaysMoney()
-    },
-    /**
-     * 当前时间
-     */
-    getSelfData () {
-      const Y = moment().format('YYYY')
-      const M = moment().format('MM')
-      const D = moment().format('DD')
-      const hh = moment().format('HH')
-      const mm = moment().format('mm')
-      const ss = moment().format('ss')
-      this.date = {
-        Y,
-        M,
-        D,
-        hh,
-        mm,
-        ss,
-        time: `${Y}-${M}-${D} ${hh}:${mm}:${ss}`
-      }
-    },
-    /**
-     * 计算退休时间
-     */
-    getWorkData () {
-      const new_date = new Date(this.date.time.replace(/-/g, '/'))
-      const old_date = new Date(`${this.retirement} 00:00:00`.replace(/-/g, '/'))
-      const diffTime = (old_date.getTime() - new_date.getTime()) / 1000
-      const dayCardinal = (365 / 12).toFixed(2)
-      const ss = Math.floor(diffTime % 60)
-      const mm = Math.floor(diffTime / 60 % 60)
-      const hh = Math.floor(diffTime / 60 / 60 % 24)
-      const D = Math.floor(diffTime / 60 / 60 / 24 % dayCardinal) - 4
-      const M = Math.floor(diffTime / 60 / 60 / 24 / dayCardinal % 12)
-      const Y = Math.floor(diffTime / 60 / 60 / 24 / dayCardinal / 12 % 365)
-      this.workDate = {
-        Y, M, D, hh, mm, ss
-      }
-    },
-    /**
-     * 计算退休总薪资
-     */
-    getRetirementMoney () {
-      const et = `${this.retirement} 00:00:00`
-      const st = this.date.time
-      const endTime = new Date(et.replace(/-/g, '/')).getTime()
-      const startTime = new Date(st.replace(/-/g, '/')).getTime()
-      // 总时长毫秒数 / 7 * 5 按7休2计算
-      const durationTime = (endTime - startTime) / 1000 / 7 * 5
-      // 计算一天薪资 每月薪资 / 21.75
-      const dayMoney = this.vuex_user.monthlyPay / 21.75
-      // 每秒薪资 一天薪资 / 24 * 60 * 60
-      const mmMoney = dayMoney / (24 * 60 * 60)
-      const money = (durationTime * mmMoney).toFixed(4)
-      this.$u.vuex('vuex_user.retirementMoney', money)
-    },
-    /**
-     * 计算今日收入薪资
-     */
-    getDaysMoney () {
-      const Y = moment().format('YYYY')
-      const M = moment().format('MM')
-      const D = moment().format('DD')
-      const et = `${Y}-${M}-${D} ${this.vuex_user.closingTime}`
-      const st = `${Y}-${M}-${D} ${this.vuex_user.dutyTime}`
-      const endTime = new Date(et.replace(/-/g, '/')).getTime()
-      const startTime = new Date(st.replace(/-/g, '/')).getTime()
-      // 总时长毫秒数
-      const durationTime = (endTime - startTime) / 1000
-      const dayMoney = this.vuex_user.monthlyPay / 21.75
-      const money = dayMoney / durationTime
-      const selfTime = new Date(this.date.time.replace(/-/g, '/')).getTime()
-      // 不到上班时间0
-      if (selfTime < startTime) {
-        this.$u.vuex('vuex_user.dayMoney', 0)
-      }
-      // 上班时间已结束
-      if (selfTime >= endTime) {
-        const m = (this.vuex_user.monthlyPay / 21.75).toFixed(4)
-        this.$u.vuex('vuex_user.dayMoney', m)
-      }
-      // 上班区间
-      if (selfTime > startTime && selfTime < endTime) {
-        const m = ((selfTime - startTime) / 1000 * money).toFixed(4)
-        this.$u.vuex('vuex_user.dayMoney', m)
-      }
-    },
-    /**
-     * 计算发薪日倒计时
-     */
-    getPayData () {
-      const { Y, M, D } = this.date
-      const { payTitle } = this.vuex_user
-      // 判断 小于 当前时间，把月份 + 1
-      let selfDay = Number(payTitle) >= D ? M : Number(M) + 1
-      let selfYear = this.$u.deepClone(Y)
-      if (selfDay > 12) {
-        selfDay = 1
-        selfYear = Number(selfYear) + 1
-      }
-      const et = `${selfYear}-${selfDay}-${this.vuex_user.payTitle} 00:00:00`
-      const st = `${Y}-${M}-${D} 00:00:00`
-      const endTime = new Date(et.replace(/-/g, '/')).getTime()
-      const startTime = new Date(st.replace(/-/g, '/')).getTime()
-      const day = Math.floor((endTime - startTime) / (1000 * 60 * 60 * 24))
-      this.$u.vuex('vuex_user.payDay', day)
-    },
-    toggleCheck (item) {
-      item.checked = !item.checked
-    },
-    /**
-     * 休息日确认
-     */
-    vacationCommit () {
-      const name = this.vacationList.filter(item => item.checked).map(item => item.name)
-      this.$u.vuex('vuex_user.vacationList', name)
-      this.getWeek()
-    },
-    /**
-     * 选择发薪日
-     * @param detail
-     */
-    payChange ({ detail }) {
-      this.payTitle = Number(detail.value) + 1
-    },
-    /**
-     * 发薪日确认
-     */
-    payCommit () {
-      this.$u.vuex('vuex_user.payTitle', this.payTitle)
-      this.payVisible = false
-      this.getPayData()
-    }
-  }
-}
+    .finally(() => {
+      pageLoading.value = false;
+    });
+};
 </script>
 <style lang="scss" scoped>
-.home{
+.home {
   padding: 30rpx;
-  .header{
+  font-size: 28rpx;
+  .header {
     @include wh(100%, 80rpx);
     @include flexCenter;
-    padding: 0 20rpx;
     position: relative;
-    &.fl{
+    &.fl {
       justify-content: flex-start;
     }
-    &-title{
-      margin-left:24rpx;
+    &-title {
+      margin-left: 24rpx;
       margin-top: -10rpx;
       font-size: 38rpx;
       font-family: xy;
       color: $uni-font;
     }
-    &-setting{
+    &-setting {
       font-family: xy;
       @include wh(150rpx, 80rpx);
       @include flexCenter;
       position: absolute;
-      top:0;
-      right:0;
-      text{
+      top: 0;
+      right: 0;
+      .navigator-wrap {
+        display: flex;
+      }
+      text {
         color: $uni-font;
-        margin-top:-10rpx;
+        margin-top: -10rpx;
       }
     }
   }
-  .row{
+  .row {
     @include flexCenter;
     gap: 15px;
-    &-item{
+    &-item {
       flex: 1;
-      .content{
+      .content {
         background: #fff;
         @include flexCenter;
         flex-direction: column;
         padding: 30rpx 0 0;
-        color:$uni-font;
-        &-label{
+        color: $uni-font;
+        &-label {
           @include wh(80%, 60rpx);
           background: $uni-color;
           border-radius: 40rpx;
@@ -524,220 +284,189 @@ export default {
           position: relative;
           z-index: 2;
         }
-        &-main{
+        &-main {
           @include wh(100%, auto);
           @include flexCenter;
           justify-content: space-between;
           padding: 20rpx 0;
-          .icon{
+          .icon {
             @include wh(40rpx, 40rpx);
             margin-left: 50rpx;
-            margin-top:10rpx;
+            margin-top: 10rpx;
             background: $uni-color;
-            border:4rpx solid $uni-font;
+            border: 4rpx solid $uni-font;
             border-radius: 50%;
             @include flexCenter;
           }
-          .img{
-            margin-right:-1rpx;
-            margin-bottom:-50rpx;
-            &-i{
-              @include wh(150rpx,150rpx);
+          .img {
+            margin-right: -1rpx;
+            margin-bottom: -50rpx;
+            &-i {
+              @include wh(150rpx, 150rpx);
             }
           }
         }
       }
     }
   }
-  .box{
+  .box {
     @include wh(100%, auto);
     padding: 40rpx 0;
     @include flexCenter;
     flex-direction: column;
-    background:#fff;
+    background: #fff;
     position: relative;
     color: $uni-font;
-    &.h5{
-      background: rgba($color: $uni-color, $alpha: .3)
-    }
-    &.mp-weixin{
-      background: #0000;
-    }
-    &-bg{
-      background: #ffffff;
-      position: absolute;
-      top:0;
-      left:0;
-      right:0;
-      z-index: -1;
-      .bg{
-        opacity: .5;
-      }
-    }
-    &-year{
-      font-size: 40rpx;
-      color: rgba($color: $uni-font, $alpha: .3);
-      text{
+    &-year {
+      .text {
         font-size: 50rpx;
-        margin:0 10rpx;
-        color:$uni-font;
+        margin: 0 10rpx;
+        color: $uni-font;
+      }
+      .dot {
+        font-size: 40rpx;
+        color: rgba($color: $uni-font, $alpha: 0.3);
       }
     }
-    &-data{
-      margin-top:20rpx;
+    &-data {
+      margin-top: 20rpx;
       font-size: 40rpx;
-      color: rgba($color: $uni-font, $alpha: .3);
-      text{
+      color: rgba($color: $uni-font, $alpha: 0.3);
+      .text {
         font-size: 40rpx;
-        margin:0 20rpx;
-        color:$uni-font;
+        margin: 0 20rpx;
+        color: $uni-font;
         display: inline-block;
         @include wh(80rpx, 80rpx);
         border-radius: 20rpx;
-        background:$uni-color;
+        background: $uni-color;
         text-align: center;
         line-height: 80rpx;
       }
     }
-    &-text{
+    &-text {
       @include wh(100%, auto);
       @include flexCenter;
       font-size: 40rpx;
       font-weight: bold;
       padding: 30rpx 0;
       position: relative;
-      .image{
+      .image {
         display: inline-block;
-        @include bis('@/static/image/home/4.png');
+        @include bis("https://s21.ax1x.com/2024/08/19/pAPljC4.png");
         @include wh(320rpx, 320rpx);
         position: absolute;
-        top:0;
-        right:-60rpx;
-        opacity: .3;
+        top: 0;
+        right: -60rpx;
+        opacity: 0.3;
       }
     }
-    &-retirement{
-      font-size: 30rpx;
-      color: rgba($color: $uni-font, $alpha: .3);
-      margin-bottom: 20rpx;
-      text{
+    &-retirement {
+      margin: 20rpx 0;
+      .text {
         font-size: 36rpx;
         color: $uni-font;
-        margin:0 6rpx;
+        margin: 0 6rpx;
+      }
+      .dot {
+        color: rgba($color: $uni-font, $alpha: 0.3);
+      }
+      &-money {
+        font-size: 36rpx;
       }
     }
-    &-days{
-      @include wh(100%, auto);
-      padding: 0 30rpx;
+    &-days {
+      @include wh(91%, auto);
       @include flexCenter;
       justify-content: space-between;
-      .money{
+      .money {
         @include wh(100%, auto);
         @include flexCenter;
         align-items: flex-start;
         flex-direction: column;
         min-height: 140rpx;
         font-size: 30rpx;
-        color: rgba($color: $uni-font, $alpha: .3);
+        color: rgba($color: $uni-font, $alpha: 0.3);
         position: relative;
-        .image{
+        .image {
           display: inline-block;
           @include wh(140rpx, 140rpx);
           position: absolute;
-          top:0;
-          right:0;
+          top: 0;
+          right: 0;
         }
-        .no{
+        .no {
           font-size: 40rpx;
           font-weight: bold;
         }
-        text{
+        text {
           font-size: 50rpx;
-          color:$uni-font;
+          color: $uni-font;
         }
       }
     }
-    &-hitokoto{
-      @include wh(100%, auto);
+    &-hitokoto {
+      @include wh(91%, auto);
       min-height: 130rpx;
-      padding: 0 30rpx;
       @include flexCenter;
       flex-direction: column;
       justify-content: space-between;
-      &-title{
+      &-title {
         @include flexCenter;
-        text{
+        text {
           text-align: left;
         }
       }
-      &-who{
-        @include wh(100%,auto);
+      &-who {
+        @include wh(100%, auto);
         text-align: right;
       }
     }
-    &-vacation{
-      @include wh(100%, auto);
-      margin: -10rpx 0;
+    &-vacation {
+      @include wh(91%, auto);
       @include flexCenter;
-      padding: 0 30rpx;
       justify-content: space-between;
       font-size: 34rpx;
-      &-number{
-        text{
-          font-size: 38rpx;
-          font-weight: bold;
-          margin-right: 8rpx;
-        }
+      &-number {
+        font-size: 38rpx;
+        font-weight: bold;
+        margin-right: 8rpx;
       }
     }
   }
-  .gap{
-    @include flexCenter;
-    justify-content: space-between;
-    padding: 0 70rpx;
-    & > view{
-      @include wh(30rpx, 20rpx);
-      background:$uni-color;
-      border-color: $uni-font;
-      border-style: solid;
-      border-width: 0 4rpx 0 4rpx;
-    };
-  }
-  .popup{
+  .popup {
     padding: 30rpx;
-    .check{
-      &-item{
+    .check {
+      &-item {
         @include flexCenter;
         justify-content: space-between;
         @include wh(100%, 70rpx);
-        .icons{
-          border: 2rpx solid #c8c9cc;
+        font-size: 14px;
+        &.active {
+          color: $uni-color;
+        }
+        .icons {
           border-radius: 50%;
-          @include wh(30rpx, 30rpx);
           position: relative;
-          &-i{
-            position: absolute;
-            top:50%;
-            left:50%;
-            transform: translate(-50%, -50%);
+          :deep(.u-icon__icon) {
+            color: #c8c9cc;
           }
-          &.check{
-            background: $uni-color;
-            border-color:$uni-color;
-            .icons-i{
-              color:#fff;
-            }
+          :deep(.uicon-checkmark-circle-fill) {
+            color: $uni-color !important;
           }
         }
       }
     }
-    .picker{
+    .picker {
       @include flexCenter;
-      &-box{
+      &-box {
         @include flexCenter;
         @include wh(200rpx, auto);
       }
     }
+  }
+  :deep(.u-toolbar__wrapper__confirm) {
+    color: $uni-color !important;
   }
 }
 </style>

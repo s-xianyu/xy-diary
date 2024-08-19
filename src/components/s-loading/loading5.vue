@@ -7,16 +7,6 @@
   </view>
 </template>
 
-<script>
-export default {
-  name: 'loading5',
-  data () {
-    return {
-
-    }
-  }
-}
-</script>
 <style scoped="true">
 .container {
   width: 30px;
@@ -26,7 +16,7 @@ export default {
 
 .container.loading5 {
   -webkit-animation: rotation 1s infinite;
-          animation: rotation 1s infinite;
+  animation: rotation 1s infinite;
 }
 .container.loading5 .shape {
   width: 12px;
@@ -41,188 +31,188 @@ export default {
 }
 .container .shape.shape1 {
   left: 0;
-  background-color: #1890FF;
+  background-color: #1890ff;
 }
 .container .shape.shape2 {
   right: 0;
-  background-color: #91CB74;
+  background-color: #91cb74;
 }
 .container .shape.shape3 {
   bottom: 0;
-  background-color: #FAC858;
+  background-color: #fac858;
 }
 .container .shape.shape4 {
   bottom: 0;
   right: 0;
-  background-color: #EE6666;
+  background-color: #ee6666;
 }
 
 .loading5 .shape1 {
   -webkit-animation: animation6shape1 2s linear 0s infinite normal;
-          animation: animation6shape1 2s linear 0s infinite normal;
+  animation: animation6shape1 2s linear 0s infinite normal;
 }
 
 @-webkit-keyframes animation6shape1 {
   0% {
     -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   25% {
     -webkit-transform: translate(0, 18px);
-            transform: translate(0, 18px);
+    transform: translate(0, 18px);
   }
   50% {
     -webkit-transform: translate(18px, 18px);
-            transform: translate(18px, 18px);
+    transform: translate(18px, 18px);
   }
   75% {
     -webkit-transform: translate(18px, 0);
-            transform: translate(18px, 0);
+    transform: translate(18px, 0);
   }
 }
 
 @keyframes animation6shape1 {
   0% {
     -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   25% {
     -webkit-transform: translate(0, 18px);
-            transform: translate(0, 18px);
+    transform: translate(0, 18px);
   }
   50% {
     -webkit-transform: translate(18px, 18px);
-            transform: translate(18px, 18px);
+    transform: translate(18px, 18px);
   }
   75% {
     -webkit-transform: translate(18px, 0);
-            transform: translate(18px, 0);
+    transform: translate(18px, 0);
   }
 }
 .loading5 .shape2 {
   -webkit-animation: animation6shape2 2s linear 0s infinite normal;
-          animation: animation6shape2 2s linear 0s infinite normal;
+  animation: animation6shape2 2s linear 0s infinite normal;
 }
 
 @-webkit-keyframes animation6shape2 {
   0% {
     -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   25% {
     -webkit-transform: translate(-18px, 0);
-            transform: translate(-18px, 0);
+    transform: translate(-18px, 0);
   }
   50% {
     -webkit-transform: translate(-18px, 18px);
-            transform: translate(-18px, 18px);
+    transform: translate(-18px, 18px);
   }
   75% {
     -webkit-transform: translate(0, 18px);
-            transform: translate(0, 18px);
+    transform: translate(0, 18px);
   }
 }
 
 @keyframes animation6shape2 {
   0% {
     -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   25% {
     -webkit-transform: translate(-18px, 0);
-            transform: translate(-18px, 0);
+    transform: translate(-18px, 0);
   }
   50% {
     -webkit-transform: translate(-18px, 18px);
-            transform: translate(-18px, 18px);
+    transform: translate(-18px, 18px);
   }
   75% {
     -webkit-transform: translate(0, 18px);
-            transform: translate(0, 18px);
+    transform: translate(0, 18px);
   }
 }
 .loading5 .shape3 {
   -webkit-animation: animation6shape3 2s linear 0s infinite normal;
-          animation: animation6shape3 2s linear 0s infinite normal;
+  animation: animation6shape3 2s linear 0s infinite normal;
 }
 
 @-webkit-keyframes animation6shape3 {
   0% {
     -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   25% {
     -webkit-transform: translate(18px, 0);
-            transform: translate(18px, 0);
+    transform: translate(18px, 0);
   }
   50% {
     -webkit-transform: translate(18px, -18px);
-            transform: translate(18px, -18px);
+    transform: translate(18px, -18px);
   }
   75% {
     -webkit-transform: translate(0, -18px);
-            transform: translate(0, -18px);
+    transform: translate(0, -18px);
   }
 }
 
 @keyframes animation6shape3 {
   0% {
     -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   25% {
     -webkit-transform: translate(18px, 0);
-            transform: translate(18px, 0);
+    transform: translate(18px, 0);
   }
   50% {
     -webkit-transform: translate(18px, -18px);
-            transform: translate(18px, -18px);
+    transform: translate(18px, -18px);
   }
   75% {
     -webkit-transform: translate(0, -18px);
-            transform: translate(0, -18px);
+    transform: translate(0, -18px);
   }
 }
 .loading5 .shape4 {
   -webkit-animation: animation6shape4 2s linear 0s infinite normal;
-          animation: animation6shape4 2s linear 0s infinite normal;
+  animation: animation6shape4 2s linear 0s infinite normal;
 }
 
 @-webkit-keyframes animation6shape4 {
   0% {
     -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   25% {
     -webkit-transform: translate(0, -18px);
-            transform: translate(0, -18px);
+    transform: translate(0, -18px);
   }
   50% {
     -webkit-transform: translate(-18px, -18px);
-            transform: translate(-18px, -18px);
+    transform: translate(-18px, -18px);
   }
   75% {
     -webkit-transform: translate(-18px, 0);
-            transform: translate(-18px, 0);
+    transform: translate(-18px, 0);
   }
 }
 
 @keyframes animation6shape4 {
   0% {
     -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   25% {
     -webkit-transform: translate(0, -18px);
-            transform: translate(0, -18px);
+    transform: translate(0, -18px);
   }
   50% {
     -webkit-transform: translate(-18px, -18px);
-            transform: translate(-18px, -18px);
+    transform: translate(-18px, -18px);
   }
   75% {
     -webkit-transform: translate(-18px, 0);
-            transform: translate(-18px, 0);
+    transform: translate(-18px, 0);
   }
 }
 </style>

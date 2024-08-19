@@ -1,83 +1,73 @@
 <template>
-  <div class="index">
-    <div class="background">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="background-box">
+  <view class="index">
+    <view class="background">
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+    </view>
+    <view class="background-box">
       <slot></slot>
-    </div>
-  </div>
+    </view>
+  </view>
 </template>
-
-<script>
-export default {
-  data () {
-    return {
-      title: 'index'
-    }
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 @keyframes animate {
-  0%{
+  0% {
     transform: translateY(0) rotate(0deg);
     opacity: 1;
     border-radius: 0;
   }
-  100%{
+  100% {
     transform: translateY(-1000px) rotate(720deg);
     opacity: 0;
     border-radius: 50%;
   }
 }
-.index{
+.index {
   width: 100%;
   height: 100%;
   position: relative;
-  .background-box{
+  .background-box {
     position: absolute;
-    top:0;
-    left:0;
-    bottom:0;
-    right:0;
-    z-index:2
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
   }
   @keyframes move {
     100% {
@@ -95,7 +85,7 @@ export default {
     overflow: hidden;
   }
 
-  .background span {
+  .background view {
     width: 4vmin;
     height: 4vmin;
     border-radius: 4vmin;
@@ -106,8 +96,8 @@ export default {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
   }
-  .background span:nth-child(0) {
-    color: #E45A84;
+  .background view:nth-child(0) {
+    color: #e45a84;
     top: 22%;
     left: 36%;
     animation-duration: 39s;
@@ -115,8 +105,8 @@ export default {
     transform-origin: 20vw 10vh;
     box-shadow: 8vmin 0 1.3680508179993163vmin currentColor;
   }
-  .background span:nth-child(1) {
-    color: #E45A84;
+  .background view:nth-child(1) {
+    color: #e45a84;
     top: 4%;
     left: 95%;
     animation-duration: 12s;
@@ -124,7 +114,7 @@ export default {
     transform-origin: 4vw 3vh;
     box-shadow: -8vmin 0 1.3942907422213813vmin currentColor;
   }
-  .background span:nth-child(2) {
+  .background view:nth-child(2) {
     color: #fad434;
     top: 18%;
     left: 87%;
@@ -133,7 +123,7 @@ export default {
     transform-origin: 16vw -5vh;
     box-shadow: -8vmin 0 1.2455543933180908vmin currentColor;
   }
-  .background span:nth-child(3) {
+  .background view:nth-child(3) {
     color: #fad434;
     top: 1%;
     left: 70%;
@@ -142,7 +132,7 @@ export default {
     transform-origin: 7vw 8vh;
     box-shadow: -8vmin 0 1.4550738704471442vmin currentColor;
   }
-  .background span:nth-child(4) {
+  .background view:nth-child(4) {
     color: #fad434;
     top: 13%;
     left: 60%;
@@ -151,8 +141,8 @@ export default {
     transform-origin: -3vw -20vh;
     box-shadow: 8vmin 0 1.5456804030834932vmin currentColor;
   }
-  .background span:nth-child(5) {
-    color: #E45A84;
+  .background view:nth-child(5) {
+    color: #e45a84;
     top: 38%;
     left: 59%;
     animation-duration: 35s;
@@ -160,8 +150,8 @@ export default {
     transform-origin: 24vw -13vh;
     box-shadow: -8vmin 0 1.640584753648893vmin currentColor;
   }
-  .background span:nth-child(6) {
-    color: #E45A84;
+  .background view:nth-child(6) {
+    color: #e45a84;
     top: 93%;
     left: 91%;
     animation-duration: 24s;
@@ -169,8 +159,8 @@ export default {
     transform-origin: -23vw 9vh;
     box-shadow: -8vmin 0 1.991619152639375vmin currentColor;
   }
-  .background span:nth-child(7) {
-    color: #E45A84;
+  .background view:nth-child(7) {
+    color: #e45a84;
     top: 75%;
     left: 89%;
     animation-duration: 19s;
@@ -178,8 +168,8 @@ export default {
     transform-origin: -8vw -18vh;
     box-shadow: -8vmin 0 1.505620475232183vmin currentColor;
   }
-  .background span:nth-child(8) {
-    color: #E45A84;
+  .background view:nth-child(8) {
+    color: #e45a84;
     top: 54%;
     left: 28%;
     animation-duration: 54s;
@@ -187,7 +177,7 @@ export default {
     transform-origin: 11vw -14vh;
     box-shadow: -8vmin 0 1.1367342037645192vmin currentColor;
   }
-  .background span:nth-child(9) {
+  .background view:nth-child(9) {
     color: #fad434;
     top: 83%;
     left: 34%;
@@ -196,8 +186,8 @@ export default {
     transform-origin: -4vw -1vh;
     box-shadow: -8vmin 0 1.378377252095716vmin currentColor;
   }
-  .background span:nth-child(10) {
-    color: #FFACAC;
+  .background view:nth-child(10) {
+    color: #ffacac;
     top: 10%;
     left: 2%;
     animation-duration: 46s;
@@ -205,8 +195,8 @@ export default {
     transform-origin: -22vw 3vh;
     box-shadow: 8vmin 0 1.088768791274781vmin currentColor;
   }
-  .background span:nth-child(11) {
-    color: #E45A84;
+  .background view:nth-child(11) {
+    color: #e45a84;
     top: 71%;
     left: 79%;
     animation-duration: 23s;
@@ -214,8 +204,8 @@ export default {
     transform-origin: 4vw 20vh;
     box-shadow: 8vmin 0 1.5147534549714756vmin currentColor;
   }
-  .background span:nth-child(12) {
-    color: #FFACAC;
+  .background view:nth-child(12) {
+    color: #ffacac;
     top: 25%;
     left: 17%;
     animation-duration: 29s;
@@ -223,7 +213,7 @@ export default {
     transform-origin: 19vw -2vh;
     box-shadow: -8vmin 0 1.8142903436010869vmin currentColor;
   }
-  .background span:nth-child(13) {
+  .background view:nth-child(13) {
     color: #fad434;
     top: 80%;
     left: 45%;
@@ -232,7 +222,7 @@ export default {
     transform-origin: 25vw 1vh;
     box-shadow: -8vmin 0 1.235652120783556vmin currentColor;
   }
-  .background span:nth-child(14) {
+  .background view:nth-child(14) {
     color: #fad434;
     top: 13%;
     left: 54%;
@@ -241,7 +231,7 @@ export default {
     transform-origin: -11vw -5vh;
     box-shadow: 8vmin 0 1.226767433913846vmin currentColor;
   }
-  .background span:nth-child(15) {
+  .background view:nth-child(15) {
     color: #fad434;
     top: 51%;
     left: 29%;
@@ -250,8 +240,8 @@ export default {
     transform-origin: 24vw 4vh;
     box-shadow: -8vmin 0 1.459490193125502vmin currentColor;
   }
-  .background span:nth-child(16) {
-    color: #FFACAC;
+  .background view:nth-child(16) {
+    color: #ffacac;
     top: 69%;
     left: 37%;
     animation-duration: 55s;
@@ -259,7 +249,7 @@ export default {
     transform-origin: 4vw 2vh;
     box-shadow: 8vmin 0 1.5917212382798787vmin currentColor;
   }
-  .background span:nth-child(17) {
+  .background view:nth-child(17) {
     color: #fad434;
     top: 78%;
     left: 58%;
@@ -268,8 +258,8 @@ export default {
     transform-origin: 4vw 23vh;
     box-shadow: -8vmin 0 1.0444064647427789vmin currentColor;
   }
-  .background span:nth-child(18) {
-    color: #FFACAC;
+  .background view:nth-child(18) {
+    color: #ffacac;
     top: 7%;
     left: 23%;
     animation-duration: 41s;
@@ -277,8 +267,8 @@ export default {
     transform-origin: -5vw 2vh;
     box-shadow: 8vmin 0 1.825546171478226vmin currentColor;
   }
-  .background span:nth-child(19) {
-    color: #E45A84;
+  .background view:nth-child(19) {
+    color: #e45a84;
     top: 35%;
     left: 9%;
     animation-duration: 15s;
@@ -286,8 +276,8 @@ export default {
     transform-origin: 9vw 4vh;
     box-shadow: 8vmin 0 1.7016391214982294vmin currentColor;
   }
-  .background span:nth-child(20) {
-    color: #FFACAC;
+  .background view:nth-child(20) {
+    color: #ffacac;
     top: 11%;
     left: 64%;
     animation-duration: 27s;
@@ -295,7 +285,7 @@ export default {
     transform-origin: -19vw -5vh;
     box-shadow: -8vmin 0 1.3433914372867946vmin currentColor;
   }
-  .background span:nth-child(21) {
+  .background view:nth-child(21) {
     color: #fad434;
     top: 71%;
     left: 39%;
@@ -304,8 +294,8 @@ export default {
     transform-origin: -22vw -21vh;
     box-shadow: -8vmin 0 1.1358049184058754vmin currentColor;
   }
-  .background span:nth-child(22) {
-    color: #FFACAC;
+  .background view:nth-child(22) {
+    color: #ffacac;
     top: 29%;
     left: 31%;
     animation-duration: 29s;
@@ -313,7 +303,7 @@ export default {
     transform-origin: -23vw -7vh;
     box-shadow: 8vmin 0 1.8503807218901964vmin currentColor;
   }
-  .background span:nth-child(23) {
+  .background view:nth-child(23) {
     color: #fad434;
     top: 83%;
     left: 77%;
@@ -322,7 +312,7 @@ export default {
     transform-origin: -22vw -17vh;
     box-shadow: -8vmin 0 1.1703681967521924vmin currentColor;
   }
-  .background span:nth-child(24) {
+  .background view:nth-child(24) {
     color: #fad434;
     top: 94%;
     left: 32%;
@@ -331,7 +321,7 @@ export default {
     transform-origin: -24vw -21vh;
     box-shadow: -8vmin 0 1.007081395702849vmin currentColor;
   }
-  .background span:nth-child(25) {
+  .background view:nth-child(25) {
     color: #fad434;
     top: 36%;
     left: 40%;
@@ -340,8 +330,8 @@ export default {
     transform-origin: 6vw 10vh;
     box-shadow: -8vmin 0 1.3991909389817592vmin currentColor;
   }
-  .background span:nth-child(26) {
-    color: #FFACAC;
+  .background view:nth-child(26) {
+    color: #ffacac;
     top: 9%;
     left: 83%;
     animation-duration: 45s;
@@ -349,8 +339,8 @@ export default {
     transform-origin: -16vw 2vh;
     box-shadow: 8vmin 0 1.6047785565531132vmin currentColor;
   }
-  .background span:nth-child(27) {
-    color: #E45A84;
+  .background view:nth-child(27) {
+    color: #e45a84;
     top: 64%;
     left: 98%;
     animation-duration: 21s;
@@ -358,7 +348,7 @@ export default {
     transform-origin: 22vw -19vh;
     box-shadow: 8vmin 0 1.5456433862498022vmin currentColor;
   }
-  .background span:nth-child(28) {
+  .background view:nth-child(28) {
     color: #fad434;
     top: 69%;
     left: 71%;
@@ -367,7 +357,7 @@ export default {
     transform-origin: 7vw 12vh;
     box-shadow: -8vmin 0 1.0451436130168617vmin currentColor;
   }
-  .background span:nth-child(29) {
+  .background view:nth-child(29) {
     color: #fad434;
     top: 59%;
     left: 38%;
@@ -376,8 +366,8 @@ export default {
     transform-origin: 25vw 2vh;
     box-shadow: -8vmin 0 1.6090247493113812vmin currentColor;
   }
-  .background span:nth-child(30) {
-    color: #FFACAC;
+  .background view:nth-child(30) {
+    color: #ffacac;
     top: 39%;
     left: 26%;
     animation-duration: 20s;
@@ -385,8 +375,8 @@ export default {
     transform-origin: -10vw 16vh;
     box-shadow: 8vmin 0 1.6460623837802222vmin currentColor;
   }
-  .background span:nth-child(31) {
-    color: #FFACAC;
+  .background view:nth-child(31) {
+    color: #ffacac;
     top: 48%;
     left: 42%;
     animation-duration: 8s;
@@ -394,8 +384,8 @@ export default {
     transform-origin: -4vw -19vh;
     box-shadow: -8vmin 0 1.0947390098115044vmin currentColor;
   }
-  .background span:nth-child(32) {
-    color: #E45A84;
+  .background view:nth-child(32) {
+    color: #e45a84;
     top: 33%;
     left: 12%;
     animation-duration: 35s;
@@ -403,8 +393,8 @@ export default {
     transform-origin: -21vw 12vh;
     box-shadow: -8vmin 0 1.607355379175779vmin currentColor;
   }
-  .background span:nth-child(33) {
-    color: #FFACAC;
+  .background view:nth-child(33) {
+    color: #ffacac;
     top: 41%;
     left: 61%;
     animation-duration: 48s;
@@ -412,8 +402,8 @@ export default {
     transform-origin: -5vw 18vh;
     box-shadow: -8vmin 0 1.822829770083996vmin currentColor;
   }
-  .background span:nth-child(34) {
-    color: #FFACAC;
+  .background view:nth-child(34) {
+    color: #ffacac;
     top: 77%;
     left: 90%;
     animation-duration: 39s;
@@ -421,8 +411,8 @@ export default {
     transform-origin: 15vw -5vh;
     box-shadow: 8vmin 0 1.1801190985084333vmin currentColor;
   }
-  .background span:nth-child(35) {
-    color: #E45A84;
+  .background view:nth-child(35) {
+    color: #e45a84;
     top: 83%;
     left: 9%;
     animation-duration: 8s;
@@ -430,6 +420,5 @@ export default {
     transform-origin: 3vw -23vh;
     box-shadow: -8vmin 0 1.394684543423571vmin currentColor;
   }
-
 }
 </style>

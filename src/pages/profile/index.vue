@@ -1,16 +1,13 @@
 <template>
   <view class="profile">
     <view class="list">
-      <view class="list-item"
-            v-for="(item, index) in profileList"
-            @click="openPopup(item, index)"
-            :key="index">
-        <s-car class="content" :border="false">
+      <view v-for="(item, index) in profileList" :key="index" class="list-item" @click="openPopup(item, index)">
+        <s-car :border="false" class="content">
           <view class="box">
-            <view class="box-label">{{item.label}}</view>
-            <view class="box-title">{{item.title}}</view>
+            <view class="box-label">{{ item.label }}</view>
+            <view class="box-title">{{ item.title }}</view>
             <view class="box-img">
-              <image :src="require(`@/static/image/home/${item.img}`)"></image>
+              <image :src="item.img"></image>
             </view>
           </view>
         </s-car>
@@ -19,27 +16,22 @@
     <view class="footer">
       <view class="organizer">
         <view>Organizer by @咸鱼日记</view>
-        <view>Author:  cmy and s-xianyu</view>
+        <view>Author: cmy and s-xianyu</view>
       </view>
     </view>
     <!-- 发薪日选择框 -->
-    <s-popup :visible.sync="visible"
-             :title="popupObj.label">
+    <s-popup v-model:show="popupObj.visible" :title="popupObj.label">
       <view class="popup">
-        <view class="popup-item" v-if="popupObj.index === 0">
+        <view v-if="popupObj.index === 0" class="popup-item">
           <view>暂时还没有东西看哦</view>
         </view>
-        <view class="popup-item" v-else-if="popupObj.index === 1">
-          <view>
-            <image
-              style="width:200rpx; height:200rpx"
-              src="@/static/image/home/weChat.png"></image>
-          </view>
+        <view v-else-if="popupObj.index === 1" class="popup-item">
+          <image src="https://s21.ax1x.com/2024/08/19/pAPtnMQ.png" style="width: 200rpx; height: 200rpx"></image>
         </view>
-        <view class="popup-item" v-else-if="popupObj.index === 2">
+        <view v-else-if="popupObj.index === 2" class="popup-item">
           <view>咸鱼日记诞生记</view>
         </view>
-        <view class="popup-item" v-else>
+        <view v-else class="popup-item">
           <view>微信：s-xianyu</view>
           <view>备注：咸鱼日记</view>
         </view>
@@ -47,69 +39,51 @@
     </s-popup>
   </view>
 </template>
-<script>
-export default {
-  data () {
-    return {
-      profileList: [
-        { label: '世界那么大', title: '我要去看看', img: '9.png' },
-        { label: '欢迎投喂', title: '请我吃糖', img: '7.png' },
-        { label: '关于日记', title: '咸鱼日记诞生记', img: '6.png' },
-        { label: '联系我', title: '欢迎合作', img: '2.png' }
-      ],
-      visible: false,
-      popupObj: {
-        index: 0,
-        label: '选择',
-        item: {}
-      }
-    }
-  },
-  async onShow () {
-    console.log('xy-diary')
-  },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage () {
-    return {
-      title: '咸鱼日记'
-    }
-  },
-  onShareTimeline () {
-    return {
-      title: '咸鱼日记'
-    }
-  },
-  methods: {
-    openPopup (item, index) {
-      this.visible = true
-      this.popupObj = {
-        index,
-        label: item.label,
-        item
-      }
-    }
+<script lang="ts" setup>
+const profileList = ref([
+  { label: "世界很大🍁", title: "我要去看看", img: "https://s21.ax1x.com/2024/08/19/pAPG6zQ.png" },
+  { label: "欢迎投喂🍩", title: "请我吃糖", img: "https://s21.ax1x.com/2024/08/19/pAPlzvR.png" },
+  { label: "关于日记🎈", title: "咸鱼日记诞生记", img: "https://s21.ax1x.com/2024/08/19/pAPGgMj.png" },
+  { label: "联系本鱼🐟", title: "欢迎合作", img: "https://s21.ax1x.com/2024/08/19/pAPlO5F.png" }
+]);
+const popupObj = ref({
+  visible: false,
+  label: "选择",
+  index: 0,
+  item: {}
+});
+onShareAppMessage(() => ({ title: "咸鱼日记" }));
+const openPopup = (item, index) => {
+  if (index === 2) {
+    uni.navigateTo({
+      url: "/pages/profile/about/index"
+    });
+  } else {
+    popupObj.value.visible = true;
+    popupObj.value.index = index;
+    popupObj.value.item = item.item;
+    popupObj.value.label = item.label;
   }
-}
+};
 </script>
+
 <style lang="scss" scoped>
-.profile{
+.profile {
   padding: 30rpx 15rpx;
-  .list{
+  .list {
     @include flexCenter;
     flex-wrap: wrap;
-    &-item{
+    &-item {
       width: 50%;
       box-sizing: border-box;
-      .content{
+      .content {
         margin: 0 15rpx 30rpx;
         display: block;
-        .box{
+        .box {
           background: #ffffff;
           @include flexCenter;
           flex-direction: column;
-          &-label{
+          &-label {
             @include wh(80%, 60rpx);
             background: $uni-color;
             border-radius: 40rpx;
@@ -119,34 +93,35 @@ export default {
             font-family: xy;
             position: relative;
             z-index: 2;
-            color:$uni-font;
+            color: $uni-font;
           }
-          &-title{
-            font-size: 34rpx;
-            color: rgba($color: $uni-font, $alpha: .3);
+          &-title {
+            font-size: 30rpx;
+            color: rgba($color: $uni-font, $alpha: 0.3);
           }
-          image{
+          image {
             @include wh(200rpx, 200rpx);
           }
         }
       }
     }
   }
-  .footer{
-    margin-top:20rpx;
-    .organizer{
+  .footer {
+    margin-top: 20rpx;
+    .organizer {
       @include wh(100%, auto);
       @include flexCenter;
       flex-direction: column;
       font-size: 28rpx;
-      color: rgba($color: $uni-font, $alpha: .3);
+      color: rgba($color: $uni-font, $alpha: 0.3);
     }
   }
-  .popup{
+  .popup {
     padding: 30rpx;
-    &-item{
+    &-item {
       @include flexCenter;
       flex-direction: column;
+      font-size: 30rpx;
     }
   }
 }

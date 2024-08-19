@@ -1,85 +1,74 @@
 <template>
-  <u-popup :value.sync="visible"
-           mode="center"
-           :width="width"
-           :z-index="zIndex"
-           @close="close"
-           :mask-close-able="maskCloseAble"
-           border-radius="30">
+  <u-popup
+    :close-on-click-overlay="props.maskCloseAble"
+    :custom-style="{
+      width: '80%'
+    }"
+    :show="props.show"
+    :z-index="props.zIndex"
+    mode="center"
+    round="30"
+    width="80%"
+    @close="close"
+  >
     <s-car>
-      <view class="header">{{title}}</view>
+      <view class="header">{{ props.title }}</view>
       <view class="con">
-        <slot/>
+        <slot />
       </view>
       <view class="btn">
-        <view v-if="showClose" class="btn-close" @click="close">取消</view>
+        <view v-if="props.showClose" class="btn-close" @click="close">取消</view>
         <view class="btn-commit" @click="commit">决定了鸭</view>
       </view>
     </s-car>
   </u-popup>
 </template>
 
-<script>
-import sCar from '../s-car/index.vue'
-export default {
-  components: {
-    sCar
-  },
-  props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
-    maskCloseAble: {
-      type: Boolean,
-      default: true
-    },
-    showClose: {
-      type: Boolean,
-      default: false
-    },
-    width: {
-      type: [String, Number],
-      default: '80%'
-    },
-    title: {
-      type: String,
-      default: '请选择'
-    },
-    zIndex: {
-      type: [String, Number],
-      default: 10075
-    }
-  },
-  methods: {
-    close () {
-      this.$emit('update:visible', false)
-    },
-    commit () {
-      this.close()
-      this.$emit('commit')
-    }
-  }
+<script lang="ts" setup>
+import sCar from "../s-car/index.vue";
+interface Props {
+  show: boolean;
+  maskCloseAble: boolean;
+  showClose: boolean;
+  width: number | string;
+  title: string;
+  zIndex: number | string;
 }
+const props = withDefaults(defineProps<Props>(), {
+  show: false,
+  maskCloseAble: true,
+  showClose: false,
+  width: "80%",
+  title: "请选择",
+  zIndex: 10075
+});
+const emit = defineEmits(["update:show", "commit"]);
+const close = () => {
+  emit("update:show", false);
+};
+const commit = () => {
+  emit("commit");
+  close();
+};
 </script>
 
 <style lang="scss" scoped>
-.header{
+.header {
   @include wh(100%, 80rpx);
   font-size: 38rpx;
   @include flexCenter;
 }
-.con{
+.con {
   background: #fff;
 }
-.btn{
+.btn {
   background: #fff;
-  @include wh(100%, auto);
+  @include wh(91%, auto);
   @include flexCenter;
   padding: 40rpx 30rpx;
   gap: 20rpx;
   &-close,
-  &-commit{
+  &-commit {
     @include flexCenter;
     @include wh(100%, 80rpx);
     border-radius: 50rpx;
@@ -88,7 +77,7 @@ export default {
     color: $uni-font;
     font-size: 36rpx;
   }
-  &-close{
+  &-close {
     background: #fff;
   }
 }
