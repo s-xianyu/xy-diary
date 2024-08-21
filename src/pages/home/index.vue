@@ -222,7 +222,7 @@ const rowList = ref([
   { label: "下班做啥呀", img: "https://s21.ax1x.com/2024/08/19/pAPlv8J.png", path: "happy" }
 ]);
 onLoad(() => getHitokoto());
-onShareAppMessage(() => ({ title: "咸鱼日记" }));
+onShareAppMessage(() => ({ title: "牛马工具" }));
 const toUrl = (url: string) => uni.navigateTo({ url });
 const hitokotoInfo = ref<Home.HitokotoInfo>({
   hitokoto: "",

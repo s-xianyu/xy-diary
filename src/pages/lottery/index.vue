@@ -35,7 +35,7 @@ const resetVisible = ref(false);
 const lotteryVisible = ref(false);
 const lotteryContent = ref("");
 const isRotating = computed(() => turntable.value?.isRotating); // 转盘是否旋转中
-onShareAppMessage(() => ({ title: "咸鱼日记" }));
+onShareAppMessage(() => ({ title: "牛马工具" }));
 // 转盘列表
 const list = computed(() => {
   return prizeInfo.list.map((item, index) => ({

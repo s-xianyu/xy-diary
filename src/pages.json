@@ -12,7 +12,7 @@
     {
       "path": "pages/home/index",
       "style": {
-        "navigationBarTitleText": "咸鱼日记"
+        "navigationBarTitleText": "牛马工具"
       }
     },
     {
@@ -54,13 +54,13 @@
     {
       "path": "pages/profile/index",
       "style": {
-        "navigationBarTitleText": "咸鱼日记"
+        "navigationBarTitleText": "牛马工具"
       }
     },
     {
       "path": "pages/profile/about/index",
       "style": {
-        "navigationBarTitleText": "关于咸鱼日记"
+        "navigationBarTitleText": "关于牛马工具"
       }
     }
   ],
@@ -84,13 +84,13 @@
         "pagePath": "pages/home/index",
         "iconPath": "/static/image/home.png",
         "selectedIconPath": "/static/image/home-active.png",
-        "text": "咸鱼",
+        "text": "首页",
         "customIcon": false
       }, {
         "pagePath": "pages/profile/index",
         "iconPath": "/static/image/me.png",
         "selectedIconPath": "/static/image/me-active.png",
-        "text": "日记",
+        "text": "我的",
         "customIcon": false
       }
     ]

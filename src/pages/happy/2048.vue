@@ -137,9 +137,7 @@ const handletouchmove = (event: Event | any) => {
 const setRandom = () => {
   if (hasAvailableCells()) {
     const s: any = randomAvailableCells();
-    const x = s.x;
-    const y = s.y;
-    list.value[x][y] = randomValue();
+    list.value[s[0]][s[1]] = randomValue();
   }
 };
 // 移动算法，i表示旋转次数

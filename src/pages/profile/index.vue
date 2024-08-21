@@ -15,7 +15,7 @@
     </view>
     <view class="footer">
       <view class="organizer">
-        <view>Organizer by @咸鱼日记</view>
+        <view>Organizer by @牛马工具</view>
         <view>Author: cmy and s-xianyu</view>
         <view>备案: 浙ICP备2024227245号</view>
       </view>
@@ -30,11 +30,11 @@
           <image src="https://s21.ax1x.com/2024/08/19/pAPtnMQ.png" style="width: 200rpx; height: 200rpx"></image>
         </view>
         <view v-else-if="popupObj.index === 2" class="popup-item">
-          <view>咸鱼日记诞生记</view>
+          <view>牛马工具诞生记</view>
         </view>
         <view v-else class="popup-item">
           <view>微信：s-xianyu</view>
-          <view>备注：咸鱼日记</view>
+          <view>备注：牛马工具</view>
         </view>
       </view>
     </s-popup>
@@ -44,7 +44,7 @@
 const profileList = ref([
   { label: "世界很大🍁", title: "我要去看看", img: "https://s21.ax1x.com/2024/08/19/pAPG6zQ.png" },
   { label: "欢迎投喂🍩", title: "请我吃糖", img: "https://s21.ax1x.com/2024/08/19/pAPlzvR.png" },
-  { label: "关于日记🎈", title: "咸鱼日记诞生记", img: "https://s21.ax1x.com/2024/08/19/pAPGgMj.png" },
+  { label: "关于日记🎈", title: "牛马工具诞生记", img: "https://s21.ax1x.com/2024/08/19/pAPGgMj.png" },
   { label: "联系本鱼🐟", title: "欢迎合作", img: "https://s21.ax1x.com/2024/08/19/pAPlO5F.png" }
 ]);
 const popupObj = ref({
@@ -53,7 +53,7 @@ const popupObj = ref({
   index: 0,
   item: {}
 });
-onShareAppMessage(() => ({ title: "咸鱼日记" }));
+onShareAppMessage(() => ({ title: "牛马工具" }));
 const openPopup = (item, index) => {
   if (index === 2) {
     uni.navigateTo({

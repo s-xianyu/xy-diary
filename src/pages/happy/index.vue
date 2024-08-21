@@ -34,7 +34,7 @@ const happyList = Object.freeze([
     path: "fish"
   }
 ]);
-onShareAppMessage(() => ({ title: "咸鱼日记" }));
+onShareAppMessage(() => ({ title: "牛马工具" }));
 const toPath = (item: { path: string }) => uni.navigateTo({ url: item.path });
 </script>
 

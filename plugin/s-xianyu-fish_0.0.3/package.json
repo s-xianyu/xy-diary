@@ -1,0 +1,16 @@
+{
+    "id": "s-xianyu-fish",
+    "name": "功德+1、敲木鱼",
+    "displayName": "功德+1、敲木鱼",
+    "version": "0.0.3",
+    "description": "功德+1、敲木鱼",
+    "keywords": [
+        "功德+1、敲木鱼、uniapp、小程序"
+    ],
+    "dcloudext": {
+        "category": [
+            "前端组件",
+            "通用组件"
+        ]
+    }
+}
