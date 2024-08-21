@@ -90,6 +90,17 @@
         </view>
       </s-car>
       <s-space />
+      <s-car :border="false">
+        <view class="box" @click="toUrl('/pages/life/index')">
+          <view class="life">
+            <view class="life-title">人生倒计时</view>
+            <view class="icon">
+              <u-icon name="arrow-right" size="14" />
+            </view>
+          </view>
+        </view>
+      </s-car>
+      <s-space />
       <view class="row">
         <view v-for="(item, index) in rowList" :key="index" class="row-item" @click="toUrl(`/pages/${item.path}/index`)">
           <s-car :border="false">
@@ -431,6 +442,17 @@ const getHitokoto = () => {
         font-size: 38rpx;
         font-weight: bold;
         margin-right: 8rpx;
+      }
+    }
+    .life {
+      @include wh(92%, auto);
+      @include flexCenter;
+      justify-content: space-between;
+      &-title {
+        font-size: 34rpx;
+      }
+      &-arrow {
+        @include flexCenter;
       }
     }
   }

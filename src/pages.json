@@ -22,6 +22,12 @@
       }
     },
     {
+      "path": "pages/life/index",
+      "style": {
+        "navigationBarTitleText": "人生倒计时"
+      }
+    },
+    {
       "path": "pages/lottery/index",
       "style": {
         "navigationBarTitleText": "吃饭时间到"

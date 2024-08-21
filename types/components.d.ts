@@ -21,6 +21,7 @@ declare module 'vue' {
     SLoading: typeof import('./../src/components/s-loading/index.vue')['default']
     SLottery: typeof import('./../src/components/s-lottery/index.vue')['default']
     SPopup: typeof import('./../src/components/s-popup/index.vue')['default']
+    SProgress: typeof import('./../src/components/s-progress/index.vue')['default']
     SSpace: typeof import('./../src/components/s-space/index.vue')['default']
   }
 }
