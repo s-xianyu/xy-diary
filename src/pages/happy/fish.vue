@@ -112,6 +112,12 @@ const changFish = () => {
     index: count
   });
   fishInfo.count = count;
+  setTimeout(() => {
+    fishActive.value = false;
+    if (tipsList.value.length > 5) {
+      tipsList.value.shift();
+    }
+  }, 300);
   audioPlay();
 };
 </script>
