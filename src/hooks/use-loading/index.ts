@@ -3,17 +3,17 @@
  */
 
 export default function useLoading() {
-  const showLoading = (content = '加载中') => {
+  const showLoading = (content = "加载中") => {
     uni.showLoading({
       title: content,
-      mask: true,
-    })
-  }
+      mask: true
+    });
+  };
   const hideLoading = () => {
-    uni.hideLoading()
-  }
+    uni.hideLoading();
+  };
   return {
     showLoading,
-    hideLoading,
-  }
+    hideLoading
+  };
 }

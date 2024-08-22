@@ -9,24 +9,20 @@
 - 邮箱：s22539634@aliyun.com
 - 企鹅：22539634
 
-### 温馨提示
-- 游戏相关在微信小程序暂时上架不了，未上架到微信小程序，如需体验可使用H5查看效果。 
-- 关于游戏已在微信小程序做了相关兼容，可以直接使用。
-
 ## Project setup
 ```
-yarn install
+pnpm install
 ```
 
 ## 小程序
 
 ### 启动小程序
 ```
-yarn serve:wx
+pnpm run dev:mp-weixin
 ```
 ### 打包小程序
 ```
-yarn build:wx
+pnpm run build:mp-weixin
 ```
 
 
@@ -39,12 +35,12 @@ yarn build:wx
 
 ### h5端启动项目
 ```
-yarn serve
+pnpm run dev:h5
 ```
 
 ### h5打包
 ```
-yarn build
+pnpm run build:h5
 ```
 
 ## 应用截图
