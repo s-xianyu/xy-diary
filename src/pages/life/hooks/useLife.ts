@@ -30,7 +30,7 @@ export const useLife = () => {
         title: "今年已过去",
         num: dayjs().dayOfYear(),
         percent: Number(((dayjs().dayOfYear() / 365) * 100).toFixed(1)),
-        suffix: "月",
+        suffix: "天",
         type: "neon"
       }
     ]

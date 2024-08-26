@@ -31,7 +31,7 @@ pnpm run build:mp-weixin
 ![Snipaste_2022-11-25_11-13-17 _1_.png](https://s2.loli.net/2022/11/25/mQKp2cBIOYGD7xd.png)
 
 ## h5小应用
-[http://xy.kuvinet.cn/](http://xy.kuvinet.cn/)
+[http://diary.xianyuya.ltd/](http://diary.xianyuya.ltd/)
 
 ### h5端启动项目
 ```
