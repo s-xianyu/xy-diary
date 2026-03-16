@@ -23,8 +23,7 @@ jobs:
 
     - name: Build
       run: |
-        npm install -g pnpm
-        pnpm -v
+        npm install -g pnpm@10.21.0
         pnpm install
         pnpm run build:h5
 
