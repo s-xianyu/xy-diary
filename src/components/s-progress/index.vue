@@ -281,7 +281,8 @@ const props = withDefaults(defineProps<Props>(), {
     -ms-linear-gradient(225deg, $uni-color 25%, rgba(234, 0, 0, 0) 25%),
     -ms-linear-gradient(315deg, $uni-color 25%, rgba(234, 0, 0, 0) 25%),
     -ms-linear-gradient(45deg, $uni-color 25%, rgba(234, 0, 0, 0) 25%);
-  background-image: linear-gradient(135deg, $uni-color 25%, rgba(234, 0, 0, 0) 25%),
+  background-image:
+    linear-gradient(135deg, $uni-color 25%, rgba(234, 0, 0, 0) 25%),
     linear-gradient(225deg, $uni-color 25%, rgba(234, 0, 0, 0) 25%),
     linear-gradient(315deg, $uni-color 25%, rgba(234, 0, 0, 0) 25%),
     linear-gradient(45deg, $uni-color 25%, rgba(234, 0, 0, 0) 25%);
@@ -341,14 +342,8 @@ const props = withDefaults(defineProps<Props>(), {
   background-image:
     -ms-linear-gradient(45deg, $uni-color 25%, rgba(255, 255, 255, 0) 25%, rgba(255, 0, 0, 0) 75%, $uni-color 75%, $uni-color),
     -ms-linear-gradient(-45deg, $uni-color 25%, rgba(255, 0, 0, 0) 25%, rgba(255, 0, 0, 0) 75%, $uni-color 75%, $uni-color);
-  background-image: linear-gradient(
-      45deg,
-      $uni-color 25%,
-      rgba(255, 0, 0, 0) 25%,
-      rgba(255, 0, 0, 0) 75%,
-      $uni-color 75%,
-      $uni-color
-    ),
+  background-image:
+    linear-gradient(45deg, $uni-color 25%, rgba(255, 0, 0, 0) 25%, rgba(255, 0, 0, 0) 75%, $uni-color 75%, $uni-color),
     linear-gradient(-45deg, $uni-color 25%, rgba(255, 0, 0, 0) 25%, rgba(255, 0, 0, 0) 75%, $uni-color 75%, $uni-color);
   background-size: 10px 10px;
   -webkit-animation: move 1.2s linear alternate infinite;
@@ -430,7 +425,8 @@ const props = withDefaults(defineProps<Props>(), {
 }
 
 .progress.hearts .progress-bar {
-  background-image: radial-gradient(circle closest-side at 60% 43%, #bb0033 26%, rgba(187, 0, 51, 0) 27%),
+  background-image:
+    radial-gradient(circle closest-side at 60% 43%, #bb0033 26%, rgba(187, 0, 51, 0) 27%),
     radial-gradient(circle closest-side at 40% 43%, #bb0033 26%, rgba(187, 0, 51, 0) 27%),
     radial-gradient(circle closest-side at 40% 22%, #dd3355 45%, rgba(221, 51, 85, 0) 46%),
     radial-gradient(circle closest-side at 60% 22%, #dd3355 45%, rgba(221, 51, 85, 0) 46%),
