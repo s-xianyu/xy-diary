@@ -46,7 +46,7 @@ pnpm run build:h5
 ## 应用截图
 
 ### 首页
-[![pi1ySFU.png](https://z1.ax1x.com/2023/11/08/pi1ySFU.png)](https://imgse.com/i/pi1ySFU)
+[[![pi1ySFU.png](https://z1.ax1x.com/2023/11/08/pi1ySFU.png)](https://imgse.com/i/pi1ySFU)](https://imgse.com/i/pi1ySFU)
 ### 关于
 [![pi1sxoT.png](https://z1.ax1x.com/2023/11/08/pi1sxoT.png)](https://imgse.com/i/pi1sxoT)
 ### 吃饭时间到《转盘》
